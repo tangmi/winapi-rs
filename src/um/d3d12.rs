@@ -425,7 +425,7 @@ ENUM!{enum D3D12_COMMAND_QUEUE_PRIORITY {
     D3D12_COMMAND_QUEUE_PRIORITY_HIGH = 100,
     D3D12_COMMAND_QUEUE_PRIORITY_GLOBAL_REALTIME = 10000,
 }}
-STRUCT!{struct D3D12_COMMAND_QUEUE_DESC {
+STRUCT!{#[debug] struct D3D12_COMMAND_QUEUE_DESC {
     Type: D3D12_COMMAND_LIST_TYPE,
     Priority: INT,
     Flags: D3D12_COMMAND_QUEUE_FLAGS,
@@ -442,7 +442,7 @@ ENUM!{enum D3D12_INPUT_CLASSIFICATION {
     D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA = 0,
     D3D12_INPUT_CLASSIFICATION_PER_INSTANCE_DATA = 1,
 }}
-STRUCT!{struct D3D12_INPUT_ELEMENT_DESC {
+STRUCT!{#[debug] struct D3D12_INPUT_ELEMENT_DESC {
     SemanticName: LPCSTR,
     SemanticIndex: UINT,
     Format: DXGI_FORMAT,
@@ -462,7 +462,7 @@ ENUM!{enum D3D12_CULL_MODE {
     D3D12_CULL_MODE_FRONT = 2,
     D3D12_CULL_MODE_BACK = 3,
 }}
-STRUCT!{struct D3D12_SO_DECLARATION_ENTRY {
+STRUCT!{#[debug] struct D3D12_SO_DECLARATION_ENTRY {
     Stream: UINT,
     SemanticName: LPCSTR,
     SemanticIndex: UINT,
@@ -470,7 +470,7 @@ STRUCT!{struct D3D12_SO_DECLARATION_ENTRY {
     ComponentCount: BYTE,
     OutputSlot: BYTE,
 }}
-STRUCT!{struct D3D12_VIEWPORT {
+STRUCT!{#[debug] struct D3D12_VIEWPORT {
     TopLeftX: FLOAT,
     TopLeftY: FLOAT,
     Width: FLOAT,
@@ -479,7 +479,7 @@ STRUCT!{struct D3D12_VIEWPORT {
     MaxDepth: FLOAT,
 }}
 pub type D3D12_RECT = RECT;
-STRUCT!{struct D3D12_BOX {
+STRUCT!{#[debug] struct D3D12_BOX {
     left: UINT,
     top: UINT,
     front: UINT,
@@ -511,13 +511,13 @@ ENUM!{enum D3D12_STENCIL_OP {
     D3D12_STENCIL_OP_INCR = 7,
     D3D12_STENCIL_OP_DECR = 8,
 }}
-STRUCT!{struct D3D12_DEPTH_STENCILOP_DESC {
+STRUCT!{#[debug] struct D3D12_DEPTH_STENCILOP_DESC {
     StencilFailOp: D3D12_STENCIL_OP,
     StencilDepthFailOp: D3D12_STENCIL_OP,
     StencilPassOp: D3D12_STENCIL_OP,
     StencilFunc: D3D12_COMPARISON_FUNC,
 }}
-STRUCT!{struct D3D12_DEPTH_STENCIL_DESC {
+STRUCT!{#[debug] struct D3D12_DEPTH_STENCIL_DESC {
     DepthEnable: BOOL,
     DepthWriteMask: D3D12_DEPTH_WRITE_MASK,
     DepthFunc: D3D12_COMPARISON_FUNC,
@@ -527,7 +527,7 @@ STRUCT!{struct D3D12_DEPTH_STENCIL_DESC {
     FrontFace: D3D12_DEPTH_STENCILOP_DESC,
     BackFace: D3D12_DEPTH_STENCILOP_DESC,
 }}
-STRUCT!{struct D3D12_DEPTH_STENCIL_DESC1 {
+STRUCT!{#[debug] struct D3D12_DEPTH_STENCIL_DESC1 {
     DepthEnable: BOOL,
     DepthWriteMask: D3D12_DEPTH_WRITE_MASK,
     DepthFunc: D3D12_COMPARISON_FUNC,
@@ -590,7 +590,7 @@ ENUM!{enum D3D12_LOGIC_OP {
     D3D12_LOGIC_OP_OR_REVERSE = 14,
     D3D12_LOGIC_OP_OR_INVERTED = 15,
 }}
-STRUCT!{struct D3D12_RENDER_TARGET_BLEND_DESC {
+STRUCT!{#[debug] struct D3D12_RENDER_TARGET_BLEND_DESC {
     BlendEnable: BOOL,
     LogicOpEnable: BOOL,
     SrcBlend: D3D12_BLEND,
@@ -602,7 +602,7 @@ STRUCT!{struct D3D12_RENDER_TARGET_BLEND_DESC {
     LogicOp: D3D12_LOGIC_OP,
     RenderTargetWriteMask: UINT8,
 }}
-STRUCT!{struct D3D12_BLEND_DESC {
+STRUCT!{#[debug] struct D3D12_BLEND_DESC {
     AlphaToCoverageEnable: BOOL,
     IndependentBlendEnable: BOOL,
     RenderTarget: [D3D12_RENDER_TARGET_BLEND_DESC; 8],
@@ -611,7 +611,7 @@ ENUM!{enum D3D12_CONSERVATIVE_RASTERIZATION_MODE {
     D3D12_CONSERVATIVE_RASTERIZATION_MODE_OFF = 0,
     D3D12_CONSERVATIVE_RASTERIZATION_MODE_ON = 1,
 }}
-STRUCT!{struct D3D12_RASTERIZER_DESC {
+STRUCT!{#[debug] struct D3D12_RASTERIZER_DESC {
     FillMode: D3D12_FILL_MODE,
     CullMode: D3D12_CULL_MODE,
     FrontCounterClockwise: BOOL,
@@ -627,18 +627,18 @@ STRUCT!{struct D3D12_RASTERIZER_DESC {
 RIDL!{#[uuid(0xc54a6b66, 0x72df, 0x4ee8, 0x8b, 0xe5, 0xa9, 0x46, 0xa1, 0x42, 0x92, 0x14)]
 interface ID3D12RootSignature(ID3D12RootSignatureVtbl):
     ID3D12DeviceChild(ID3D12DeviceChildVtbl) {}}
-STRUCT!{struct D3D12_SHADER_BYTECODE {
+STRUCT!{#[debug] struct D3D12_SHADER_BYTECODE {
     pShaderBytecode: *const c_void,
     BytecodeLength: SIZE_T,
 }}
-STRUCT!{struct D3D12_STREAM_OUTPUT_DESC {
+STRUCT!{#[debug] struct D3D12_STREAM_OUTPUT_DESC {
     pSODeclaration: *const D3D12_SO_DECLARATION_ENTRY,
     NumEntries: UINT,
     pBufferStrides: *const UINT,
     NumStrides: UINT,
     RasterizedStream: UINT,
 }}
-STRUCT!{struct D3D12_INPUT_LAYOUT_DESC {
+STRUCT!{#[debug] struct D3D12_INPUT_LAYOUT_DESC {
     pInputElementDescs: *const D3D12_INPUT_ELEMENT_DESC,
     NumElements: UINT,
 }}
@@ -647,7 +647,7 @@ ENUM!{enum D3D12_INDEX_BUFFER_STRIP_CUT_VALUE {
     D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_0xFFFF = 1,
     D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_0xFFFFFFFF = 2,
 }}
-STRUCT!{struct D3D12_CACHED_PIPELINE_STATE {
+STRUCT!{#[debug] struct D3D12_CACHED_PIPELINE_STATE {
     pCachedBlob: *const c_void,
     CachedBlobSizeInBytes: SIZE_T,
 }}
@@ -655,7 +655,7 @@ ENUM!{enum D3D12_PIPELINE_STATE_FLAGS {
     D3D12_PIPELINE_STATE_FLAG_NONE = 0,
     D3D12_PIPELINE_STATE_FLAG_TOOL_DEBUG = 0x1,
 }}
-STRUCT!{struct D3D12_GRAPHICS_PIPELINE_STATE_DESC {
+STRUCT!{#[debug] struct D3D12_GRAPHICS_PIPELINE_STATE_DESC {
     pRootSignature: *mut ID3D12RootSignature,
     VS: D3D12_SHADER_BYTECODE,
     PS: D3D12_SHADER_BYTECODE,
@@ -678,18 +678,18 @@ STRUCT!{struct D3D12_GRAPHICS_PIPELINE_STATE_DESC {
     CachedPSO: D3D12_CACHED_PIPELINE_STATE,
     Flags: D3D12_PIPELINE_STATE_FLAGS,
 }}
-STRUCT!{struct D3D12_COMPUTE_PIPELINE_STATE_DESC {
+STRUCT!{#[debug] struct D3D12_COMPUTE_PIPELINE_STATE_DESC {
     pRootSignature: *mut ID3D12RootSignature,
     CS: D3D12_SHADER_BYTECODE,
     NodeMask: UINT,
     CachedPSO: D3D12_CACHED_PIPELINE_STATE,
     Flags: D3D12_PIPELINE_STATE_FLAGS,
 }}
-STRUCT!{struct D3D12_RT_FORMAT_ARRAY {
+STRUCT!{#[debug] struct D3D12_RT_FORMAT_ARRAY {
     RTFormats: [DXGI_FORMAT; 8],
     NumRenderTargets: UINT,
 }}
-STRUCT!{struct D3D12_PIPELINE_STATE_STREAM_DESC {
+STRUCT!{#[debug] struct D3D12_PIPELINE_STATE_STREAM_DESC {
     SizeInBytes: SIZE_T,
     pPipelineStateSubobjectStream: *mut c_void,
 }}
@@ -821,7 +821,7 @@ ENUM!{enum D3D12_PROGRAMMABLE_SAMPLE_POSITIONS_TIER {
     D3D12_PROGRAMMABLE_SAMPLE_POSITIONS_TIER_1 = 1,
     D3D12_PROGRAMMABLE_SAMPLE_POSITIONS_TIER_2 = 2,
 }}
-STRUCT!{struct D3D12_FEATURE_DATA_D3D12_OPTIONS {
+STRUCT!{#[debug] struct D3D12_FEATURE_DATA_D3D12_OPTIONS {
     DoublePrecisionFloatShaderOps: BOOL,
     OutputMergerLogicOp: BOOL,
     MinPrecisionSupport: D3D12_SHADER_MIN_PRECISION_SUPPORT,
@@ -838,7 +838,7 @@ STRUCT!{struct D3D12_FEATURE_DATA_D3D12_OPTIONS {
     VPAndRTArrayIndexFromAnyShaderFeedingRasterizerSupportedWithoutGSEmulation: BOOL,
     ResourceHeapTier: D3D12_RESOURCE_HEAP_TIER,
 }}
-STRUCT!{struct D3D12_FEATURE_DATA_D3D12_OPTIONS1 {
+STRUCT!{#[debug] struct D3D12_FEATURE_DATA_D3D12_OPTIONS1 {
     WaveOps: BOOL,
     WaveLaneCountMin: UINT,
     WaveLaneCountMax: UINT,
@@ -846,7 +846,7 @@ STRUCT!{struct D3D12_FEATURE_DATA_D3D12_OPTIONS1 {
     ExpandedComputeResourceStates: BOOL,
     Int64ShaderOps: BOOL,
 }}
-STRUCT!{struct D3D12_FEATURE_DATA_D3D12_OPTIONS2 {
+STRUCT!{#[debug] struct D3D12_FEATURE_DATA_D3D12_OPTIONS2 {
     DepthBoundsTestSupported: BOOL,
     ProgrammableSamplePositionsTier: D3D12_PROGRAMMABLE_SAMPLE_POSITIONS_TIER,
 }}
@@ -855,23 +855,23 @@ ENUM!{enum D3D_ROOT_SIGNATURE_VERSION {
     D3D_ROOT_SIGNATURE_VERSION_1_0 = 0x1,
     D3D_ROOT_SIGNATURE_VERSION_1_1 = 0x2,
 }}
-STRUCT!{struct D3D12_FEATURE_DATA_ROOT_SIGNATURE {
+STRUCT!{#[debug] struct D3D12_FEATURE_DATA_ROOT_SIGNATURE {
     HighestVersion: D3D_ROOT_SIGNATURE_VERSION,
 }}
-STRUCT!{struct D3D12_FEATURE_DATA_ARCHITECTURE {
+STRUCT!{#[debug] struct D3D12_FEATURE_DATA_ARCHITECTURE {
     NodeIndex: UINT,
     TileBasedRenderer: BOOL,
     UMA: BOOL,
     CacheCoherentUMA: BOOL,
 }}
-STRUCT!{struct D3D12_FEATURE_DATA_ARCHITECTURE1 {
+STRUCT!{#[debug] struct D3D12_FEATURE_DATA_ARCHITECTURE1 {
     NodeIndex: UINT,
     TileBasedRenderer: BOOL,
     UMA: BOOL,
     CacheCoherentUMA: BOOL,
     IsolatedMMU: BOOL,
 }}
-STRUCT!{struct D3D12_FEATURE_DATA_FEATURE_LEVELS {
+STRUCT!{#[debug] struct D3D12_FEATURE_DATA_FEATURE_LEVELS {
     NumFeatureLevels: UINT,
     pFeatureLevelsRequested: *const D3D_FEATURE_LEVEL,
     MaxSupportedFeatureLevel: D3D_FEATURE_LEVEL,
@@ -880,25 +880,25 @@ ENUM!{enum D3D_SHADER_MODEL {
     D3D_SHADER_MODEL_5_1 = 0x51,
     D3D_SHADER_MODEL_6_0 = 0x60,
 }}
-STRUCT!{struct D3D12_FEATURE_DATA_SHADER_MODEL {
+STRUCT!{#[debug] struct D3D12_FEATURE_DATA_SHADER_MODEL {
     HighestShaderModel: D3D_SHADER_MODEL,
 }}
-STRUCT!{struct D3D12_FEATURE_DATA_FORMAT_SUPPORT {
+STRUCT!{#[debug] struct D3D12_FEATURE_DATA_FORMAT_SUPPORT {
     Format: DXGI_FORMAT,
     Support1: D3D12_FORMAT_SUPPORT1,
     Support2: D3D12_FORMAT_SUPPORT2,
 }}
-STRUCT!{struct D3D12_FEATURE_DATA_MULTISAMPLE_QUALITY_LEVELS {
+STRUCT!{#[debug] struct D3D12_FEATURE_DATA_MULTISAMPLE_QUALITY_LEVELS {
     Format: DXGI_FORMAT,
     SampleCount: UINT,
     Flags: D3D12_MULTISAMPLE_QUALITY_LEVEL_FLAGS,
     NumQualityLevels: UINT,
 }}
-STRUCT!{struct D3D12_FEATURE_DATA_FORMAT_INFO {
+STRUCT!{#[debug] struct D3D12_FEATURE_DATA_FORMAT_INFO {
     Format: DXGI_FORMAT,
     PlaneCount: UINT8,
 }}
-STRUCT!{struct D3D12_FEATURE_DATA_GPU_VIRTUAL_ADDRESS_SUPPORT {
+STRUCT!{#[debug] struct D3D12_FEATURE_DATA_GPU_VIRTUAL_ADDRESS_SUPPORT {
     MaxGPUVirtualAddressBitsPerResource: UINT,
     MaxGPUVirtualAddressBitsPerProcess: UINT,
 }}
@@ -909,15 +909,15 @@ ENUM!{enum D3D12_SHADER_CACHE_SUPPORT_FLAGS {
     D3D12_SHADER_CACHE_SUPPORT_AUTOMATIC_INPROC_CACHE = 0x4,
     D3D12_SHADER_CACHE_SUPPORT_AUTOMATIC_DISK_CACHE = 0x8,
 }}
-STRUCT!{struct D3D12_FEATURE_DATA_SHADER_CACHE {
+STRUCT!{#[debug] struct D3D12_FEATURE_DATA_SHADER_CACHE {
     SupportFlags: D3D12_SHADER_CACHE_SUPPORT_FLAGS,
 }}
-STRUCT!{struct D3D12_FEATURE_DATA_COMMAND_QUEUE_PRIORITY {
+STRUCT!{#[debug] struct D3D12_FEATURE_DATA_COMMAND_QUEUE_PRIORITY {
     CommandListType: D3D12_COMMAND_LIST_TYPE,
     Priority: UINT,
     PriorityForTypeIsSupported: BOOL,
 }}
-STRUCT!{struct D3D12_RESOURCE_ALLOCATION_INFO {
+STRUCT!{#[debug] struct D3D12_RESOURCE_ALLOCATION_INFO {
     SizeInBytes: UINT64,
     Alignment: UINT64,
 }}
@@ -938,7 +938,7 @@ ENUM!{enum D3D12_MEMORY_POOL {
     D3D12_MEMORY_POOL_L0 = 1,
     D3D12_MEMORY_POOL_L1 = 2,
 }}
-STRUCT!{struct D3D12_HEAP_PROPERTIES {
+STRUCT!{#[debug] struct D3D12_HEAP_PROPERTIES {
     Type: D3D12_HEAP_TYPE,
     CPUPageProperty: D3D12_CPU_PAGE_PROPERTY,
     MemoryPoolPreference: D3D12_MEMORY_POOL,
@@ -960,7 +960,7 @@ ENUM!{enum D3D12_HEAP_FLAGS {
     D3D12_HEAP_FLAG_ALLOW_ONLY_NON_RT_DS_TEXTURES = 0x44,
     D3D12_HEAP_FLAG_ALLOW_ONLY_RT_DS_TEXTURES = 0x84,
 }}
-STRUCT!{struct D3D12_HEAP_DESC {
+STRUCT!{#[debug] struct D3D12_HEAP_DESC {
     SizeInBytes: UINT64,
     Properties: D3D12_HEAP_PROPERTIES,
     Alignment: UINT64,
@@ -988,7 +988,7 @@ ENUM!{enum D3D12_RESOURCE_FLAGS {
     D3D12_RESOURCE_FLAG_ALLOW_CROSS_ADAPTER = 0x10,
     D3D12_RESOURCE_FLAG_ALLOW_SIMULTANEOUS_ACCESS = 0x20,
 }}
-STRUCT!{struct D3D12_RESOURCE_DESC {
+STRUCT!{#[debug] struct D3D12_RESOURCE_DESC {
     Dimension: D3D12_RESOURCE_DIMENSION,
     Alignment: UINT64,
     Width: UINT64,
@@ -1000,7 +1000,7 @@ STRUCT!{struct D3D12_RESOURCE_DESC {
     Layout: D3D12_TEXTURE_LAYOUT,
     Flags: D3D12_RESOURCE_FLAGS,
 }}
-STRUCT!{struct D3D12_DEPTH_STENCIL_VALUE {
+STRUCT!{#[debug] struct D3D12_DEPTH_STENCIL_VALUE {
     Depth: FLOAT,
     Stencil: UINT8,
 }}
@@ -1009,34 +1009,34 @@ UNION!{union D3D12_CLEAR_VALUE_u {
     Color Color_mut: [FLOAT; 4],
     DepthStencil DepthStencil_mut: D3D12_DEPTH_STENCIL_VALUE,
 }}
-STRUCT!{struct D3D12_CLEAR_VALUE {
+STRUCT!{#[debug] struct D3D12_CLEAR_VALUE {
     Format: DXGI_FORMAT,
     u: D3D12_CLEAR_VALUE_u,
 }}
-STRUCT!{struct D3D12_RANGE {
+STRUCT!{#[debug] struct D3D12_RANGE {
     Begin: SIZE_T,
     End: SIZE_T,
 }}
-STRUCT!{struct D3D12_RANGE_UINT64 {
+STRUCT!{#[debug] struct D3D12_RANGE_UINT64 {
     Begin: UINT64,
     End: UINT64,
 }}
-STRUCT!{struct D3D12_SUBRESOURCE_RANGE_UINT64 {
+STRUCT!{#[debug] struct D3D12_SUBRESOURCE_RANGE_UINT64 {
     Subresource: UINT,
     Range: D3D12_RANGE_UINT64,
 }}
-STRUCT!{struct D3D12_SUBRESOURCE_INFO {
+STRUCT!{#[debug] struct D3D12_SUBRESOURCE_INFO {
     Offset: UINT64,
     RowPitch: UINT,
     DepthPitch: UINT,
 }}
-STRUCT!{struct D3D12_TILED_RESOURCE_COORDINATE {
+STRUCT!{#[debug] struct D3D12_TILED_RESOURCE_COORDINATE {
     X: UINT,
     Y: UINT,
     Z: UINT,
     Subresource: UINT,
 }}
-STRUCT!{struct D3D12_TILE_REGION_SIZE {
+STRUCT!{#[debug] struct D3D12_TILE_REGION_SIZE {
     NumTiles: UINT,
     UseBox: BOOL,
     Width: UINT,
@@ -1049,18 +1049,18 @@ ENUM!{enum D3D12_TILE_RANGE_FLAGS {
     D3D12_TILE_RANGE_FLAG_SKIP = 2,
     D3D12_TILE_RANGE_FLAG_REUSE_SINGLE_TILE = 4,
 }}
-STRUCT!{struct D3D12_SUBRESOURCE_TILING {
+STRUCT!{#[debug] struct D3D12_SUBRESOURCE_TILING {
     WidthInTiles: UINT,
     HeightInTiles: UINT16,
     DepthInTiles: UINT16,
     StartTileIndexInOverallResource: UINT,
 }}
-STRUCT!{struct D3D12_TILE_SHAPE {
+STRUCT!{#[debug] struct D3D12_TILE_SHAPE {
     WidthInTexels: UINT,
     HeightInTexels: UINT,
     DepthInTexels: UINT,
 }}
-STRUCT!{struct D3D12_PACKED_MIP_INFO {
+STRUCT!{#[debug] struct D3D12_PACKED_MIP_INFO {
     NumStandardMips: UINT8,
     NumPackedMips: UINT8,
     NumTilesForPackedMips: UINT,
@@ -1101,17 +1101,17 @@ ENUM!{enum D3D12_RESOURCE_BARRIER_TYPE {
     D3D12_RESOURCE_BARRIER_TYPE_ALIASING = 1,
     D3D12_RESOURCE_BARRIER_TYPE_UAV = 2,
 }}
-STRUCT!{struct D3D12_RESOURCE_TRANSITION_BARRIER {
+STRUCT!{#[debug] struct D3D12_RESOURCE_TRANSITION_BARRIER {
     pResource: *mut ID3D12Resource,
     Subresource: UINT,
     StateBefore: D3D12_RESOURCE_STATES,
     StateAfter: D3D12_RESOURCE_STATES,
 }}
-STRUCT!{struct D3D12_RESOURCE_ALIASING_BARRIER {
+STRUCT!{#[debug] struct D3D12_RESOURCE_ALIASING_BARRIER {
     pResourceBefore: *mut ID3D12Resource,
     pResourceAfter: *mut ID3D12Resource,
 }}
-STRUCT!{struct D3D12_RESOURCE_UAV_BARRIER {
+STRUCT!{#[debug] struct D3D12_RESOURCE_UAV_BARRIER {
     pResource: *mut ID3D12Resource,
 }}
 ENUM!{enum D3D12_RESOURCE_BARRIER_FLAGS {
@@ -1125,19 +1125,19 @@ UNION!{union D3D12_RESOURCE_BARRIER_u {
     Aliasing Aliasing_mut: D3D12_RESOURCE_ALIASING_BARRIER,
     UAV UAV_mut: D3D12_RESOURCE_UAV_BARRIER,
 }}
-STRUCT!{struct D3D12_RESOURCE_BARRIER {
+STRUCT!{#[debug] struct D3D12_RESOURCE_BARRIER {
     Type: D3D12_RESOURCE_BARRIER_TYPE,
     Flags: D3D12_RESOURCE_BARRIER_FLAGS,
     u: D3D12_RESOURCE_BARRIER_u,
 }}
-STRUCT!{struct D3D12_SUBRESOURCE_FOOTPRINT {
+STRUCT!{#[debug] struct D3D12_SUBRESOURCE_FOOTPRINT {
     Format: DXGI_FORMAT,
     Width: UINT,
     Height: UINT,
     Depth: UINT,
     RowPitch: UINT,
 }}
-STRUCT!{struct D3D12_PLACED_SUBRESOURCE_FOOTPRINT {
+STRUCT!{#[debug] struct D3D12_PLACED_SUBRESOURCE_FOOTPRINT {
     Offset: UINT64,
     Footprint: D3D12_SUBRESOURCE_FOOTPRINT,
 }}
@@ -1150,7 +1150,7 @@ UNION!{union D3D12_TEXTURE_COPY_LOCATION_u {
     PlacedFootprint PlacedFootprint_mut: D3D12_PLACED_SUBRESOURCE_FOOTPRINT,
     SubresourceIndex SubresourceIndex_mut: UINT,
 }}
-STRUCT!{struct D3D12_TEXTURE_COPY_LOCATION {
+STRUCT!{#[debug] struct D3D12_TEXTURE_COPY_LOCATION {
     pResource: *mut ID3D12Resource,
     Type: D3D12_TEXTURE_COPY_TYPE,
     u: D3D12_TEXTURE_COPY_LOCATION_u,
@@ -1161,7 +1161,7 @@ ENUM!{enum D3D12_RESOLVE_MODE {
     D3D12_RESOLVE_MODE_MAX = 2,
     D3D12_RESOLVE_MODE_AVERAGE = 3,
 }}
-STRUCT!{struct D3D12_SAMPLE_POSITION {
+STRUCT!{#[debug] struct D3D12_SAMPLE_POSITION {
     X: INT8,
     Y: INT8,
 }}
@@ -1184,31 +1184,31 @@ ENUM!{enum D3D12_BUFFER_SRV_FLAGS {
     D3D12_BUFFER_SRV_FLAG_NONE = 0x0,
     D3D12_BUFFER_SRV_FLAG_RAW = 0x1,
 }}
-STRUCT!{struct D3D12_BUFFER_SRV {
+STRUCT!{#[debug] struct D3D12_BUFFER_SRV {
     FirstElement: UINT64,
     NumElements: UINT,
     StructureByteStride: UINT,
     Flags: D3D12_BUFFER_SRV_FLAGS,
 }}
-STRUCT!{struct D3D12_TEX1D_SRV {
+STRUCT!{#[debug] struct D3D12_TEX1D_SRV {
     MostDetailedMip: UINT,
     MipLevels: UINT,
     ResourceMinLODClamp: FLOAT,
 }}
-STRUCT!{struct D3D12_TEX1D_ARRAY_SRV {
+STRUCT!{#[debug] struct D3D12_TEX1D_ARRAY_SRV {
     MostDetailedMip: UINT,
     MipLevels: UINT,
     FirstArraySlice: UINT,
     ArraySize: UINT,
     ResourceMinLODClamp: FLOAT,
 }}
-STRUCT!{struct D3D12_TEX2D_SRV {
+STRUCT!{#[debug] struct D3D12_TEX2D_SRV {
     MostDetailedMip: UINT,
     MipLevels: UINT,
     PlaneSlice: UINT,
     ResourceMinLODClamp: FLOAT,
 }}
-STRUCT!{struct D3D12_TEX2D_ARRAY_SRV {
+STRUCT!{#[debug] struct D3D12_TEX2D_ARRAY_SRV {
     MostDetailedMip: UINT,
     MipLevels: UINT,
     FirstArraySlice: UINT,
@@ -1216,27 +1216,27 @@ STRUCT!{struct D3D12_TEX2D_ARRAY_SRV {
     PlaneSlice: UINT,
     ResourceMinLODClamp: FLOAT,
 }}
-STRUCT!{struct D3D12_TEX3D_SRV {
+STRUCT!{#[debug] struct D3D12_TEX3D_SRV {
     MostDetailedMip: UINT,
     MipLevels: UINT,
     ResourceMinLODClamp: FLOAT,
 }}
-STRUCT!{struct D3D12_TEXCUBE_SRV {
+STRUCT!{#[debug] struct D3D12_TEXCUBE_SRV {
     MostDetailedMip: UINT,
     MipLevels: UINT,
     ResourceMinLODClamp: FLOAT,
 }}
-STRUCT!{struct D3D12_TEXCUBE_ARRAY_SRV {
+STRUCT!{#[debug] struct D3D12_TEXCUBE_ARRAY_SRV {
     MostDetailedMip: UINT,
     MipLevels: UINT,
     First2DArrayFace: UINT,
     NumCubes: UINT,
     ResourceMinLODClamp: FLOAT,
 }}
-STRUCT!{struct D3D12_TEX2DMS_SRV {
+STRUCT!{#[debug] struct D3D12_TEX2DMS_SRV {
     UnusedField_NothingToDefine: UINT,
 }}
-STRUCT!{struct D3D12_TEX2DMS_ARRAY_SRV {
+STRUCT!{#[debug] struct D3D12_TEX2DMS_ARRAY_SRV {
     FirstArraySlice: UINT,
     ArraySize: UINT,
 }}
@@ -1266,13 +1266,13 @@ UNION!{union D3D12_SHADER_RESOURCE_VIEW_DESC_u {
     TextureCube TextureCube_mut: D3D12_TEXCUBE_SRV,
     TextureCubeArray TextureCubeArray_mut: D3D12_TEXCUBE_ARRAY_SRV,
 }}
-STRUCT!{struct D3D12_SHADER_RESOURCE_VIEW_DESC {
+STRUCT!{#[debug] struct D3D12_SHADER_RESOURCE_VIEW_DESC {
     Format: DXGI_FORMAT,
     ViewDimension: D3D12_SRV_DIMENSION,
     Shader4ComponentMapping: UINT,
     u: D3D12_SHADER_RESOURCE_VIEW_DESC_u,
 }}
-STRUCT!{struct D3D12_CONSTANT_BUFFER_VIEW_DESC {
+STRUCT!{#[debug] struct D3D12_CONSTANT_BUFFER_VIEW_DESC {
     BufferLocation: D3D12_GPU_VIRTUAL_ADDRESS,
     SizeInBytes: UINT,
 }}
@@ -1346,7 +1346,7 @@ ENUM!{enum D3D12_TEXTURE_ADDRESS_MODE {
     D3D12_TEXTURE_ADDRESS_MODE_BORDER = 4,
     D3D12_TEXTURE_ADDRESS_MODE_MIRROR_ONCE = 5,
 }}
-STRUCT!{struct D3D12_SAMPLER_DESC {
+STRUCT!{#[debug] struct D3D12_SAMPLER_DESC {
     Filter: D3D12_FILTER,
     AddressU: D3D12_TEXTURE_ADDRESS_MODE,
     AddressV: D3D12_TEXTURE_ADDRESS_MODE,
@@ -1362,32 +1362,32 @@ ENUM!{enum D3D12_BUFFER_UAV_FLAGS {
     D3D12_BUFFER_UAV_FLAG_NONE = 0,
     D3D12_BUFFER_UAV_FLAG_RAW = 0x1,
 }}
-STRUCT!{struct D3D12_BUFFER_UAV {
+STRUCT!{#[debug] struct D3D12_BUFFER_UAV {
     FirstElement: UINT64,
     NumElements: UINT,
     StructureByteStride: UINT,
     CounterOffsetInBytes: UINT64,
     Flags: D3D12_BUFFER_UAV_FLAGS,
 }}
-STRUCT!{struct D3D12_TEX1D_UAV {
+STRUCT!{#[debug] struct D3D12_TEX1D_UAV {
     MipSlice: UINT,
 }}
-STRUCT!{struct D3D12_TEX1D_ARRAY_UAV {
-    MipSlice: UINT,
-    FirstArraySlice: UINT,
-    ArraySize: UINT,
-}}
-STRUCT!{struct D3D12_TEX2D_UAV {
-    MipSlice: UINT,
-    PlaneSlice: UINT,
-}}
-STRUCT!{struct D3D12_TEX2D_ARRAY_UAV {
+STRUCT!{#[debug] struct D3D12_TEX1D_ARRAY_UAV {
     MipSlice: UINT,
     FirstArraySlice: UINT,
     ArraySize: UINT,
+}}
+STRUCT!{#[debug] struct D3D12_TEX2D_UAV {
+    MipSlice: UINT,
     PlaneSlice: UINT,
 }}
-STRUCT!{struct D3D12_TEX3D_UAV {
+STRUCT!{#[debug] struct D3D12_TEX2D_ARRAY_UAV {
+    MipSlice: UINT,
+    FirstArraySlice: UINT,
+    ArraySize: UINT,
+    PlaneSlice: UINT,
+}}
+STRUCT!{#[debug] struct D3D12_TEX3D_UAV {
     MipSlice: UINT,
     FirstWSlice: UINT,
     WSize: UINT,
@@ -1410,41 +1410,41 @@ UNION!{union D3D12_UNORDERED_ACCESS_VIEW_DESC_u {
     Texture2DArray Texture2DArray_mut: D3D12_TEX2D_ARRAY_UAV,
     Texture3D Texture3D_mut: D3D12_TEX3D_UAV,
 }}
-STRUCT!{struct D3D12_UNORDERED_ACCESS_VIEW_DESC {
+STRUCT!{#[debug] struct D3D12_UNORDERED_ACCESS_VIEW_DESC {
     Format: DXGI_FORMAT,
     ViewDimension: D3D12_UAV_DIMENSION,
     u: D3D12_UNORDERED_ACCESS_VIEW_DESC_u,
 }}
-STRUCT!{struct D3D12_BUFFER_RTV {
+STRUCT!{#[debug] struct D3D12_BUFFER_RTV {
     FirstElement: UINT64,
     NumElements: UINT,
 }}
-STRUCT!{struct D3D12_TEX1D_RTV {
+STRUCT!{#[debug] struct D3D12_TEX1D_RTV {
     MipSlice: UINT,
 }}
-STRUCT!{struct D3D12_TEX1D_ARRAY_RTV {
+STRUCT!{#[debug] struct D3D12_TEX1D_ARRAY_RTV {
     MipSlice: UINT,
     FirstArraySlice: UINT,
     ArraySize: UINT,
 }}
-STRUCT!{struct D3D12_TEX2D_RTV {
+STRUCT!{#[debug] struct D3D12_TEX2D_RTV {
     MipSlice: UINT,
     PlaneSlice: UINT,
 }}
-STRUCT!{struct D3D12_TEX2DMS_RTV {
+STRUCT!{#[debug] struct D3D12_TEX2DMS_RTV {
     UnusedField_NothingToDefine: UINT,
 }}
-STRUCT!{struct D3D12_TEX2D_ARRAY_RTV {
+STRUCT!{#[debug] struct D3D12_TEX2D_ARRAY_RTV {
     MipSlice: UINT,
     FirstArraySlice: UINT,
     ArraySize: UINT,
     PlaneSlice: UINT,
 }}
-STRUCT!{struct D3D12_TEX2DMS_ARRAY_RTV {
+STRUCT!{#[debug] struct D3D12_TEX2DMS_ARRAY_RTV {
     FirstArraySlice: UINT,
     ArraySize: UINT,
 }}
-STRUCT!{struct D3D12_TEX3D_RTV {
+STRUCT!{#[debug] struct D3D12_TEX3D_RTV {
     MipSlice: UINT,
     FirstWSlice: UINT,
     WSize: UINT,
@@ -1471,31 +1471,31 @@ UNION!{union D3D12_RENDER_TARGET_VIEW_DESC_u {
     Texture2DMSArray Texture2DMSArray_mut: D3D12_TEX2DMS_ARRAY_RTV,
     Texture3D Texture3D_mut: D3D12_TEX3D_RTV,
 }}
-STRUCT!{struct D3D12_RENDER_TARGET_VIEW_DESC {
+STRUCT!{#[debug] struct D3D12_RENDER_TARGET_VIEW_DESC {
     Format: DXGI_FORMAT,
     ViewDimension: D3D12_RTV_DIMENSION,
     u: D3D12_RENDER_TARGET_VIEW_DESC_u,
 }}
-STRUCT!{struct D3D12_TEX1D_DSV {
+STRUCT!{#[debug] struct D3D12_TEX1D_DSV {
     MipSlice: UINT,
 }}
-STRUCT!{struct D3D12_TEX1D_ARRAY_DSV {
-    MipSlice: UINT,
-    FirstArraySlice: UINT,
-    ArraySize: UINT,
-}}
-STRUCT!{struct D3D12_TEX2D_DSV {
-    MipSlice: UINT,
-}}
-STRUCT!{struct D3D12_TEX2D_ARRAY_DSV {
+STRUCT!{#[debug] struct D3D12_TEX1D_ARRAY_DSV {
     MipSlice: UINT,
     FirstArraySlice: UINT,
     ArraySize: UINT,
 }}
-STRUCT!{struct D3D12_TEX2DMS_DSV {
+STRUCT!{#[debug] struct D3D12_TEX2D_DSV {
+    MipSlice: UINT,
+}}
+STRUCT!{#[debug] struct D3D12_TEX2D_ARRAY_DSV {
+    MipSlice: UINT,
+    FirstArraySlice: UINT,
+    ArraySize: UINT,
+}}
+STRUCT!{#[debug] struct D3D12_TEX2DMS_DSV {
     UnusedField_NothingToDefine: UINT,
 }}
-STRUCT!{struct D3D12_TEX2DMS_ARRAY_DSV {
+STRUCT!{#[debug] struct D3D12_TEX2DMS_ARRAY_DSV {
     FirstArraySlice: UINT,
     ArraySize: UINT,
 }}
@@ -1522,7 +1522,7 @@ UNION!{union D3D12_DEPTH_STENCIL_VIEW_DESC_u {
     Texture2DMS Texture2DMS_mut: D3D12_TEX2DMS_DSV,
     Texture2DMSArray Texture2DMSArray_mut: D3D12_TEX2DMS_ARRAY_DSV,
 }}
-STRUCT!{struct D3D12_DEPTH_STENCIL_VIEW_DESC {
+STRUCT!{#[debug] struct D3D12_DEPTH_STENCIL_VIEW_DESC {
     Format: DXGI_FORMAT,
     ViewDimension: D3D12_DSV_DIMENSION,
     Flags: D3D12_DSV_FLAGS,
@@ -1548,7 +1548,7 @@ ENUM!{enum D3D12_DESCRIPTOR_HEAP_FLAGS {
     D3D12_DESCRIPTOR_HEAP_FLAG_NONE = 0x0,
     D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE = 0x1,
 }}
-STRUCT!{struct D3D12_DESCRIPTOR_HEAP_DESC {
+STRUCT!{#[debug] struct D3D12_DESCRIPTOR_HEAP_DESC {
     Type: D3D12_DESCRIPTOR_HEAP_TYPE,
     NumDescriptors: UINT,
     Flags: D3D12_DESCRIPTOR_HEAP_FLAGS,
@@ -1560,23 +1560,23 @@ ENUM!{enum D3D12_DESCRIPTOR_RANGE_TYPE {
     D3D12_DESCRIPTOR_RANGE_TYPE_CBV = 2,
     D3D12_DESCRIPTOR_RANGE_TYPE_SAMPLER = 3,
 }}
-STRUCT!{struct D3D12_DESCRIPTOR_RANGE {
+STRUCT!{#[debug] struct D3D12_DESCRIPTOR_RANGE {
     RangeType: D3D12_DESCRIPTOR_RANGE_TYPE,
     NumDescriptors: UINT,
     BaseShaderRegister: UINT,
     RegisterSpace: UINT,
     OffsetInDescriptorsFromTableStart: UINT,
 }}
-STRUCT!{struct D3D12_ROOT_DESCRIPTOR_TABLE {
+STRUCT!{#[debug] struct D3D12_ROOT_DESCRIPTOR_TABLE {
     NumDescriptorRanges: UINT,
     pDescriptorRanges: *const D3D12_DESCRIPTOR_RANGE,
 }}
-STRUCT!{struct D3D12_ROOT_CONSTANTS {
+STRUCT!{#[debug] struct D3D12_ROOT_CONSTANTS {
     ShaderRegister: UINT,
     RegisterSpace: UINT,
     Num32BitValues: UINT,
 }}
-STRUCT!{struct D3D12_ROOT_DESCRIPTOR {
+STRUCT!{#[debug] struct D3D12_ROOT_DESCRIPTOR {
     ShaderRegister: UINT,
     RegisterSpace: UINT,
 }}
@@ -1601,7 +1601,7 @@ UNION!{union D3D12_ROOT_PARAMETER_u {
     Constants Constants_mut: D3D12_ROOT_CONSTANTS,
     Descriptor Descriptor_mut: D3D12_ROOT_DESCRIPTOR,
 }}
-STRUCT!{struct D3D12_ROOT_PARAMETER {
+STRUCT!{#[debug] struct D3D12_ROOT_PARAMETER {
     ParameterType: D3D12_ROOT_PARAMETER_TYPE,
     u: D3D12_ROOT_PARAMETER_u,
     ShaderVisibility: D3D12_SHADER_VISIBILITY,
@@ -1621,7 +1621,7 @@ ENUM!{enum D3D12_STATIC_BORDER_COLOR {
     D3D12_STATIC_BORDER_COLOR_OPAQUE_BLACK = 1,
     D3D12_STATIC_BORDER_COLOR_OPAQUE_WHITE = 2,
 }}
-STRUCT!{struct D3D12_STATIC_SAMPLER_DESC {
+STRUCT!{#[debug] struct D3D12_STATIC_SAMPLER_DESC {
     Filter: D3D12_FILTER,
     AddressU: D3D12_TEXTURE_ADDRESS_MODE,
     AddressV: D3D12_TEXTURE_ADDRESS_MODE,
@@ -1636,7 +1636,7 @@ STRUCT!{struct D3D12_STATIC_SAMPLER_DESC {
     RegisterSpace: UINT,
     ShaderVisibility: D3D12_SHADER_VISIBILITY,
 }}
-STRUCT!{struct D3D12_ROOT_SIGNATURE_DESC {
+STRUCT!{#[debug] struct D3D12_ROOT_SIGNATURE_DESC {
     NumParameters: UINT,
     pParameters: *const D3D12_ROOT_PARAMETER,
     NumStaticSamplers: UINT,
@@ -1650,7 +1650,7 @@ ENUM!{enum D3D12_DESCRIPTOR_RANGE_FLAGS {
     D3D12_DESCRIPTOR_RANGE_FLAG_DATA_STATIC_WHILE_SET_AT_EXECUTE = 0x4,
     D3D12_DESCRIPTOR_RANGE_FLAG_DATA_STATIC = 0x8,
 }}
-STRUCT!{struct D3D12_DESCRIPTOR_RANGE1 {
+STRUCT!{#[debug] struct D3D12_DESCRIPTOR_RANGE1 {
     RangeType: D3D12_DESCRIPTOR_RANGE_TYPE,
     NumDescriptors: UINT,
     BaseShaderRegister: UINT,
@@ -1658,7 +1658,7 @@ STRUCT!{struct D3D12_DESCRIPTOR_RANGE1 {
     Flags: D3D12_DESCRIPTOR_RANGE_FLAGS,
     OffsetInDescriptorsFromTableStart: UINT,
 }}
-STRUCT!{struct D3D12_ROOT_DESCRIPTOR_TABLE1 {
+STRUCT!{#[debug] struct D3D12_ROOT_DESCRIPTOR_TABLE1 {
     NumDescriptorRanges: UINT,
     pDescriptorRanges: *const D3D12_DESCRIPTOR_RANGE1,
 }}
@@ -1668,7 +1668,7 @@ ENUM!{enum D3D12_ROOT_DESCRIPTOR_FLAGS {
     D3D12_ROOT_DESCRIPTOR_FLAG_DATA_STATIC_WHILE_SET_AT_EXECUTE = 0x4,
     D3D12_ROOT_DESCRIPTOR_FLAG_DATA_STATIC = 0x8,
 }}
-STRUCT!{struct D3D12_ROOT_DESCRIPTOR1 {
+STRUCT!{#[debug] struct D3D12_ROOT_DESCRIPTOR1 {
     ShaderRegister: UINT,
     RegisterSpace: UINT,
     Flags: D3D12_ROOT_DESCRIPTOR_FLAGS,
@@ -1679,12 +1679,12 @@ UNION!{union D3D12_ROOT_PARAMETER1_u {
     Constants Constants_mut: D3D12_ROOT_CONSTANTS,
     Descriptor Descriptor_mut: D3D12_ROOT_DESCRIPTOR1,
 }}
-STRUCT!{struct D3D12_ROOT_PARAMETER1 {
+STRUCT!{#[debug] struct D3D12_ROOT_PARAMETER1 {
     ParameterType: D3D12_ROOT_PARAMETER_TYPE,
     u: D3D12_ROOT_PARAMETER1_u,
     ShaderVisibility: D3D12_SHADER_VISIBILITY,
 }}
-STRUCT!{struct D3D12_ROOT_SIGNATURE_DESC1 {
+STRUCT!{#[debug] struct D3D12_ROOT_SIGNATURE_DESC1 {
     NumParameters: UINT,
     pParameters: *const D3D12_ROOT_PARAMETER1,
     NumStaticSamplers: UINT,
@@ -1696,7 +1696,7 @@ UNION!{union D3D12_VERSIONED_ROOT_SIGNATURE_DESC_u {
     Desc_1_0 Desc_1_0_mut: D3D12_ROOT_SIGNATURE_DESC,
     Desc_1_1 Desc_1_1_mut: D3D12_ROOT_SIGNATURE_DESC1,
 }}
-STRUCT!{struct D3D12_VERSIONED_ROOT_SIGNATURE_DESC {
+STRUCT!{#[debug] struct D3D12_VERSIONED_ROOT_SIGNATURE_DESC {
     Version: UINT,
     u: D3D12_VERSIONED_ROOT_SIGNATURE_DESC_u,
 }}
@@ -1768,13 +1768,13 @@ extern "system" {
         ppRootSignatureDeserializer: *mut *mut c_void,
     ) -> HRESULT;
 }
-STRUCT!{struct D3D12_CPU_DESCRIPTOR_HANDLE {
+STRUCT!{#[debug] struct D3D12_CPU_DESCRIPTOR_HANDLE {
     ptr: SIZE_T,
 }}
-STRUCT!{struct D3D12_GPU_DESCRIPTOR_HANDLE {
+STRUCT!{#[debug] struct D3D12_GPU_DESCRIPTOR_HANDLE {
     ptr: UINT64,
 }}
-STRUCT!{struct D3D12_DISCARD_REGION {
+STRUCT!{#[debug] struct D3D12_DISCARD_REGION {
     NumRects: UINT,
     pRects: *const D3D12_RECT,
     FirstSubresource: UINT,
@@ -1786,7 +1786,7 @@ ENUM!{enum D3D12_QUERY_HEAP_TYPE {
     D3D12_QUERY_HEAP_TYPE_PIPELINE_STATISTICS = 2,
     D3D12_QUERY_HEAP_TYPE_SO_STATISTICS = 3,
 }}
-STRUCT!{struct D3D12_QUERY_HEAP_DESC {
+STRUCT!{#[debug] struct D3D12_QUERY_HEAP_DESC {
     Type: D3D12_QUERY_HEAP_TYPE,
     Count: UINT,
     NodeMask: UINT,
@@ -1805,7 +1805,7 @@ ENUM!{enum D3D12_PREDICATION_OP {
     D3D12_PREDICATION_OP_EQUAL_ZERO = 0,
     D3D12_PREDICATION_OP_NOT_EQUAL_ZERO = 1,
 }}
-STRUCT!{struct D3D12_QUERY_DATA_PIPELINE_STATISTICS {
+STRUCT!{#[debug] struct D3D12_QUERY_DATA_PIPELINE_STATISTICS {
     IAVertices: UINT64,
     IAPrimitives: UINT64,
     VSInvocations: UINT64,
@@ -1818,39 +1818,39 @@ STRUCT!{struct D3D12_QUERY_DATA_PIPELINE_STATISTICS {
     DSInvocations: UINT64,
     CSInvocations: UINT64,
 }}
-STRUCT!{struct D3D12_QUERY_DATA_SO_STATISTICS {
+STRUCT!{#[debug] struct D3D12_QUERY_DATA_SO_STATISTICS {
     NumPrimitivesWritten: UINT64,
     PrimitivesStorageNeeded: UINT64,
 }}
-STRUCT!{struct D3D12_STREAM_OUTPUT_BUFFER_VIEW {
+STRUCT!{#[debug] struct D3D12_STREAM_OUTPUT_BUFFER_VIEW {
     BufferLocation: D3D12_GPU_VIRTUAL_ADDRESS,
     SizeInBytes: UINT64,
     BufferFilledSizeLocation: D3D12_GPU_VIRTUAL_ADDRESS,
 }}
-STRUCT!{struct D3D12_DRAW_ARGUMENTS {
+STRUCT!{#[debug] struct D3D12_DRAW_ARGUMENTS {
     VertexCountPerInstance: UINT,
     InstanceCount: UINT,
     StartVertexLocation: UINT,
     StartInstanceLocation: UINT,
 }}
-STRUCT!{struct D3D12_DRAW_INDEXED_ARGUMENTS {
+STRUCT!{#[debug] struct D3D12_DRAW_INDEXED_ARGUMENTS {
     IndexCountPerInstance: UINT,
     InstanceCount: UINT,
     StartIndexLocation: UINT,
     BaseVertexLocation: INT,
     StartInstanceLocation: UINT,
 }}
-STRUCT!{struct D3D12_DISPATCH_ARGUMENTS {
+STRUCT!{#[debug] struct D3D12_DISPATCH_ARGUMENTS {
     ThreadGroupCountX: UINT,
     ThreadGroupCountY: UINT,
     ThreadGroupCountZ: UINT,
 }}
-STRUCT!{struct D3D12_VERTEX_BUFFER_VIEW {
+STRUCT!{#[debug] struct D3D12_VERTEX_BUFFER_VIEW {
     BufferLocation: D3D12_GPU_VIRTUAL_ADDRESS,
     SizeInBytes: UINT,
     StrideInBytes: UINT,
 }}
-STRUCT!{struct D3D12_INDEX_BUFFER_VIEW {
+STRUCT!{#[debug] struct D3D12_INDEX_BUFFER_VIEW {
     BufferLocation: D3D12_GPU_VIRTUAL_ADDRESS,
     SizeInBytes: UINT,
     Format: DXGI_FORMAT,
@@ -1866,21 +1866,21 @@ ENUM!{enum D3D12_INDIRECT_ARGUMENT_TYPE {
     D3D12_INDIRECT_ARGUMENT_TYPE_SHADER_RESOURCE_VIEW = 7,
     D3D12_INDIRECT_ARGUMENT_TYPE_UNORDERED_ACCESS_VIEW = 8,
 }}
-STRUCT!{struct D3D12_INDIRECT_ARGUMENT_DESC_VertexBuffer {
+STRUCT!{#[debug] struct D3D12_INDIRECT_ARGUMENT_DESC_VertexBuffer {
     Slot: UINT,
 }}
-STRUCT!{struct D3D12_INDIRECT_ARGUMENT_DESC_Constant {
+STRUCT!{#[debug] struct D3D12_INDIRECT_ARGUMENT_DESC_Constant {
     RootParameterIndex: UINT,
     DestOffsetIn32BitValues: UINT,
     Num32BitValuesToSet: UINT,
 }}
-STRUCT!{struct D3D12_INDIRECT_ARGUMENT_DESC_ConstantBufferView {
+STRUCT!{#[debug] struct D3D12_INDIRECT_ARGUMENT_DESC_ConstantBufferView {
     RootParameterIndex: UINT,
 }}
-STRUCT!{struct D3D12_INDIRECT_ARGUMENT_DESC_ShaderResourceView {
+STRUCT!{#[debug] struct D3D12_INDIRECT_ARGUMENT_DESC_ShaderResourceView {
     RootParameterIndex: UINT,
 }}
-STRUCT!{struct D3D12_INDIRECT_ARGUMENT_DESC_UnorderedAccessView {
+STRUCT!{#[debug] struct D3D12_INDIRECT_ARGUMENT_DESC_UnorderedAccessView {
     RootParameterIndex: UINT,
 }}
 UNION!{union D3D12_INDIRECT_ARGUMENT_DESC_u {
@@ -1891,11 +1891,11 @@ UNION!{union D3D12_INDIRECT_ARGUMENT_DESC_u {
     ShaderResourceView ShaderResourceView_mut: D3D12_INDIRECT_ARGUMENT_DESC_ShaderResourceView,
     UnorderedAccessView UnorderedAccessView_mut: D3D12_INDIRECT_ARGUMENT_DESC_UnorderedAccessView,
 }}
-STRUCT!{struct D3D12_INDIRECT_ARGUMENT_DESC {
+STRUCT!{#[debug] struct D3D12_INDIRECT_ARGUMENT_DESC {
     Type: D3D12_INDIRECT_ARGUMENT_TYPE,
     u: D3D12_INDIRECT_ARGUMENT_DESC_u,
 }}
-STRUCT!{struct D3D12_COMMAND_SIGNATURE_DESC {
+STRUCT!{#[debug] struct D3D12_COMMAND_SIGNATURE_DESC {
     ByteStride: UINT,
     NumArgumentDescs: UINT,
     pArgumentDescs: *const D3D12_INDIRECT_ARGUMENT_DESC,
@@ -2632,12 +2632,12 @@ interface ID3D12Tools(ID3D12ToolsVtbl): IUnknown(IUnknownVtbl) {
     ) -> (),
     fn ShaderInstrumentationEnabled() -> BOOL,
 }}
-STRUCT!{struct D3D12_SUBRESOURCE_DATA {
+STRUCT!{#[debug] struct D3D12_SUBRESOURCE_DATA {
     pData: *const c_void,
     RowPitch: LONG_PTR,
     SlicePitch: LONG_PTR,
 }}
-STRUCT!{struct D3D12_MEMCPY_DEST {
+STRUCT!{#[debug] struct D3D12_MEMCPY_DEST {
     pData: *mut c_void,
     RowPitch: SIZE_T,
     SlicePitch: SIZE_T,

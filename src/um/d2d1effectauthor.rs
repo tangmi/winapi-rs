@@ -90,12 +90,12 @@ ENUM!{enum D2D1_FEATURE {
     D2D1_FEATURE_DOUBLES = 0,
     D2D1_FEATURE_D3D10_X_HARDWARE_OPTIONS = 1,
 }}
-STRUCT!{struct D2D1_PROPERTY_BINDING {
+STRUCT!{#[debug] struct D2D1_PROPERTY_BINDING {
     propertyName: PCWSTR,
     setFunction: PD2D1_PROPERTY_SET_FUNCTION,
     getFunction: PD2D1_PROPERTY_GET_FUNCTION,
 }}
-STRUCT!{struct D2D1_RESOURCE_TEXTURE_PROPERTIES {
+STRUCT!{#[debug] struct D2D1_RESOURCE_TEXTURE_PROPERTIES {
     extents: *const UINT32,
     dimensions: UINT32,
     bufferPrecision: D2D1_BUFFER_PRECISION,
@@ -103,7 +103,7 @@ STRUCT!{struct D2D1_RESOURCE_TEXTURE_PROPERTIES {
     filter: D2D1_FILTER,
     extendModes: *const D2D1_EXTEND_MODE,
 }}
-STRUCT!{struct D2D1_INPUT_ELEMENT_DESC {
+STRUCT!{#[debug] struct D2D1_INPUT_ELEMENT_DESC {
     semanticName: PCSTR,
     semanticIndex: UINT32,
     format: DXGI_FORMAT,
@@ -111,24 +111,24 @@ STRUCT!{struct D2D1_INPUT_ELEMENT_DESC {
     alignedByteOffset: UINT32,
 }}
 pub const D2D1_APPEND_ALIGNED_ELEMENT: UINT32 = 0xffffffff;
-STRUCT!{struct D2D1_VERTEX_BUFFER_PROPERTIES {
+STRUCT!{#[debug] struct D2D1_VERTEX_BUFFER_PROPERTIES {
     inputCount: UINT32,
     usage: D2D1_VERTEX_USAGE,
     data: *const BYTE,
     byteWidth: UINT32,
 }}
-STRUCT!{struct D2D1_CUSTOM_VERTEX_BUFFER_PROPERTIES {
+STRUCT!{#[debug] struct D2D1_CUSTOM_VERTEX_BUFFER_PROPERTIES {
     shaderBufferWithInputSignature: *const BYTE,
     shaderBufferSize: UINT32,
     inputElements: *const D2D1_INPUT_ELEMENT_DESC,
     elementCount: UINT32,
     stride: UINT32,
 }}
-STRUCT!{struct D2D1_VERTEX_RANGE {
+STRUCT!{#[debug] struct D2D1_VERTEX_RANGE {
     startVertex: UINT32,
     vertexCount: UINT32,
 }}
-STRUCT!{struct D2D1_BLEND_DESCRIPTION {
+STRUCT!{#[debug] struct D2D1_BLEND_DESCRIPTION {
     sourceBlend: D2D1_BLEND,
     destinationBlend: D2D1_BLEND,
     blendOperation: D2D1_BLEND_OPERATION,
@@ -137,14 +137,14 @@ STRUCT!{struct D2D1_BLEND_DESCRIPTION {
     blendOperationAlpha: D2D1_BLEND_OPERATION,
     blendFactor: [FLOAT; 4],
 }}
-STRUCT!{struct D2D1_INPUT_DESCRIPTION {
+STRUCT!{#[debug] struct D2D1_INPUT_DESCRIPTION {
     filter: D2D1_FILTER,
     leveOfDetailCount: UINT32,
 }}
-STRUCT!{struct D2D1_FEATURE_DATA_DOUBLES {
+STRUCT!{#[debug] struct D2D1_FEATURE_DATA_DOUBLES {
     doublePrecisionFloatShaderOps: BOOL,
 }}
-STRUCT!{struct D2D1_FEATURE_DATA_D3D10_X_HARDWARE_OPTIONS {
+STRUCT!{#[debug] struct D2D1_FEATURE_DATA_D3D10_X_HARDWARE_OPTIONS {
     computeShaders_Plus_RawAndStructuredBuffers_Via_Shader_4_x: BOOL,
 }}
 DEFINE_GUID!{IID_ID2D1VertexBuffer,

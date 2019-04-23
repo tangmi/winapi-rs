@@ -31,10 +31,10 @@ ENUM!{enum DXGI_OVERLAY_SUPPORT_FLAG {
     DXGI_OVERLAY_SUPPORT_FLAG_DIRECT = 0x1,
     DXGI_OVERLAY_SUPPORT_FLAG_SCALING = 0x2,
 }}
-STRUCT!{struct DXGI_DECODE_SWAP_CHAIN_DESC {
+STRUCT!{#[debug] struct DXGI_DECODE_SWAP_CHAIN_DESC {
     Flags: UINT,
 }}
-STRUCT!{struct DXGI_FRAME_STATISTICS_MEDIA {
+STRUCT!{#[debug] struct DXGI_FRAME_STATISTICS_MEDIA {
     PresentCount: UINT,
     PresentRefreshCount: UINT,
     SyncRefreshCount: UINT,
@@ -43,7 +43,7 @@ STRUCT!{struct DXGI_FRAME_STATISTICS_MEDIA {
     CompositionMode: DXGI_FRAME_PRESENTATION_MODE,
     ApprovedPresentDuration: UINT,
 }}
-STRUCT!{struct DXGI_MATRIX_3X2_F {
+STRUCT!{#[debug] struct DXGI_MATRIX_3X2_F {
     _11: FLOAT,
     _12: FLOAT,
     _21: FLOAT,

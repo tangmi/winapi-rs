@@ -181,22 +181,22 @@ ENUM!{enum D2D1_COLOR_INTERPOLATION_MODE {
 pub use um::d2dbasetypes::D2D_VECTOR_2F as D2D1_VECTOR_2F;
 pub use um::d2dbasetypes::D2D_VECTOR_3F as D2D1_VECTOR_3F;
 pub use um::d2dbasetypes::D2D_VECTOR_4F as D2D1_VECTOR_4F;
-STRUCT!{struct D2D1_BITMAP_PROPERTIES1 {
+STRUCT!{#[debug] struct D2D1_BITMAP_PROPERTIES1 {
     pixelFormat: D2D1_PIXEL_FORMAT,
     dpiX: FLOAT,
     dpiY: FLOAT,
     bitmapOptions: D2D1_BITMAP_OPTIONS,
     colorContext: *const ID2D1ColorContext,
 }}
-STRUCT!{struct D2D1_MAPPED_RECT {
+STRUCT!{#[debug] struct D2D1_MAPPED_RECT {
     pitch: UINT32,
     bits: *const BYTE,
 }}
-STRUCT!{struct D2D1_RENDERING_CONTROLS {
+STRUCT!{#[debug] struct D2D1_RENDERING_CONTROLS {
     bufferPrecision: D2D1_BUFFER_PRECISION,
     tileSize: D2D1_SIZE_U,
 }}
-STRUCT!{struct D2D1_EFFECT_INPUT_DESCRIPTION {
+STRUCT!{#[debug] struct D2D1_EFFECT_INPUT_DESCRIPTION {
     effect: *const ID2D1Effect,
     inputIndex: UINT32,
     inputRectangle: D2D1_RECT_F,
@@ -204,25 +204,25 @@ STRUCT!{struct D2D1_EFFECT_INPUT_DESCRIPTION {
 pub use um::d2dbasetypes::D2D_MATRIX_4X3_F as D2D1_MATRIX_4X3_F;
 pub use um::d2dbasetypes::D2D_MATRIX_4X4_F as D2D1_MATRIX_4X4_F;
 pub use um::d2dbasetypes::D2D_MATRIX_5X4_F as D2D1_MATRIX_5X4_F;
-STRUCT!{struct D2D1_POINT_DESCRIPTION {
+STRUCT!{#[debug] struct D2D1_POINT_DESCRIPTION {
     point: D2D1_POINT_2F,
     unitTangentVector: D2D1_POINT_2F,
     endSegment: UINT32,
     endFigure: UINT32,
     lengthToEndSegment: FLOAT,
 }}
-STRUCT!{struct D2D1_IMAGE_BRUSH_PROPERTIES {
+STRUCT!{#[debug] struct D2D1_IMAGE_BRUSH_PROPERTIES {
     sourceRectangle: D2D1_RECT_F,
     extendModeX: D2D1_EXTEND_MODE,
     extendModeY: D2D1_EXTEND_MODE,
     interpolationMode: D2D1_INTERPOLATION_MODE,
 }}
-STRUCT!{struct D2D1_BITMAP_BRUSH_PROPERTIES1 {
+STRUCT!{#[debug] struct D2D1_BITMAP_BRUSH_PROPERTIES1 {
     extendModeX: D2D1_EXTEND_MODE,
     extendModeY: D2D1_EXTEND_MODE,
     interpolationMode: D2D1_INTERPOLATION_MODE,
 }}
-STRUCT!{struct D2D1_STROKE_STYLE_PROPERTIES1 {
+STRUCT!{#[debug] struct D2D1_STROKE_STYLE_PROPERTIES1 {
     startCap: D2D1_CAP_STYLE,
     endCap: D2D1_CAP_STYLE,
     dashCap: D2D1_CAP_STYLE,
@@ -239,7 +239,7 @@ ENUM!{enum D2D1_LAYER_OPTIONS1 {
     D2D1_LAYER_OPTIONS1_FORCE_DWORD = 0xffffffff,
 }}
 //DEFINE_ENUM_FLAG_OPERATORS(D2D1_LAYER_OPTIONS1);
-STRUCT!{struct D2D1_LAYER_PARAMETERS1 {
+STRUCT!{#[debug] struct D2D1_LAYER_PARAMETERS1 {
     contentBounds: D2D1_RECT_F,
     geometricMask: *const ID2D1Geometry,
     maskAntialiasMode: D2D1_ANTIALIAS_MODE,
@@ -254,7 +254,7 @@ ENUM!{enum D2D1_PRINT_FONT_SUBSET_MODE {
     D2D1_PRINT_FONT_SUBSET_MODE_NONE = 2,
     D2D1_PRINT_FONT_SUBSET_MODE_FORCE_DWORD = 0xffffffff,
 }}
-STRUCT!{struct D2D1_DRAWING_STATE_DESCRIPTION1 {
+STRUCT!{#[debug] struct D2D1_DRAWING_STATE_DESCRIPTION1 {
     antialiasMode: D2D1_ANTIALIAS_MODE,
     textAntialiasMode: D2D1_TEXT_ANTIALIAS_MODE,
     tag1: D2D1_TAG,
@@ -263,12 +263,12 @@ STRUCT!{struct D2D1_DRAWING_STATE_DESCRIPTION1 {
     primitiveBlend: D2D1_PRIMITIVE_BLEND,
     unitMode: D2D1_UNIT_MODE,
 }}
-STRUCT!{struct D2D1_PRINT_CONTROL_PROPERTIES {
+STRUCT!{#[debug] struct D2D1_PRINT_CONTROL_PROPERTIES {
     fontSubset: D2D1_PRINT_FONT_SUBSET_MODE,
     rasterDPI: FLOAT,
     colorSpace: D2D1_COLOR_SPACE,
 }}
-STRUCT!{struct D2D1_CREATION_PROPERTIES {
+STRUCT!{#[debug] struct D2D1_CREATION_PROPERTIES {
     threadingMode: D2D1_THREADING_MODE,
     debugLevel: D2D1_DEBUG_LEVEL,
     options: D2D1_DEVICE_CONTEXT_OPTIONS,

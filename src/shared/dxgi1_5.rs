@@ -31,7 +31,7 @@ ENUM!{enum DXGI_HDR_METADATA_TYPE {
     DXGI_HDR_METADATA_TYPE_NONE = 0,
     DXGI_HDR_METADATA_TYPE_HDR10 = 1,
 }}
-STRUCT!{struct DXGI_HDR_METADATA_HDR10 {
+STRUCT!{#[debug] struct DXGI_HDR_METADATA_HDR10 {
     RedPrimary: [UINT16; 2],
     GreenPrimary: [UINT16; 2],
     BluePrimary: [UINT16; 2],

@@ -16,18 +16,18 @@ use shared::minwindef::{BOOL, BYTE, DWORD, FLOAT, HMODULE, UINT};
 use shared::windef::{HDC, HMONITOR, HWND, RECT};
 use um::unknwnbase::{IUnknown, IUnknownVtbl};
 use um::winnt::{HANDLE, HRESULT, INT, LARGE_INTEGER, LUID, WCHAR};
-STRUCT!{struct DXGI_FRAME_STATISTICS {
+STRUCT!{#[debug] struct DXGI_FRAME_STATISTICS {
     PresentCount: UINT,
     PresentRefreshCount: UINT,
     SyncRefreshCount: UINT,
     SyncQPCTime: LARGE_INTEGER,
     SyncGPUTime: LARGE_INTEGER,
 }}
-STRUCT!{struct DXGI_MAPPED_RECT {
+STRUCT!{#[debug] struct DXGI_MAPPED_RECT {
     Pitch: INT,
     pBits: *mut BYTE,
 }}
-STRUCT!{struct DXGI_ADAPTER_DESC {
+STRUCT!{#[debug] struct DXGI_ADAPTER_DESC {
     Description: [WCHAR; 128],
     VendorId: UINT,
     DeviceId: UINT,
@@ -38,14 +38,14 @@ STRUCT!{struct DXGI_ADAPTER_DESC {
     SharedSystemMemory: SIZE_T,
     AdapterLuid: LUID,
 }}
-STRUCT!{struct DXGI_OUTPUT_DESC {
+STRUCT!{#[debug] struct DXGI_OUTPUT_DESC {
     DeviceName: [WCHAR; 32],
     DesktopCoordinates: RECT,
     AttachedToDesktop: BOOL,
     Rotation: DXGI_MODE_ROTATION,
     Monitor: HMONITOR,
 }}
-STRUCT!{struct DXGI_SHARED_RESOURCE {
+STRUCT!{#[debug] struct DXGI_SHARED_RESOURCE {
     Handle: HANDLE,
 }}
 pub const DXGI_RESOURCE_PRIORITY_MINIMUM: DWORD = 0x28000000;
@@ -58,7 +58,7 @@ ENUM!{enum DXGI_RESIDENCY {
     DXGI_RESIDENCY_RESIDENT_IN_SHARED_MEMORY = 2,
     DXGI_RESIDENCY_EVICTED_TO_DISK = 3,
 }}
-STRUCT!{struct DXGI_SURFACE_DESC {
+STRUCT!{#[debug] struct DXGI_SURFACE_DESC {
     Width: UINT,
     Height: UINT,
     Format: DXGI_FORMAT,
@@ -84,7 +84,7 @@ ENUM!{enum DXGI_SWAP_CHAIN_FLAG {
     DXGI_SWAP_CHAIN_FLAG_HW_PROTECTED = 1024,
     DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING = 2048,
 }}
-STRUCT!{struct DXGI_SWAP_CHAIN_DESC {
+STRUCT!{#[debug] struct DXGI_SWAP_CHAIN_DESC {
     BufferDesc: DXGI_MODE_DESC,
     SampleDesc: DXGI_SAMPLE_DESC,
     BufferUsage: DXGI_USAGE,
@@ -342,7 +342,7 @@ ENUM!{enum DXGI_ADAPTER_FLAG {
     DXGI_ADAPTER_FLAG_REMOTE,
     DXGI_ADAPTER_FLAG_SOFTWARE,
 }}
-STRUCT!{struct DXGI_ADAPTER_DESC1 {
+STRUCT!{#[debug] struct DXGI_ADAPTER_DESC1 {
     Description: [WCHAR; 128],
     VendorId: UINT,
     DeviceId: UINT,
@@ -354,7 +354,7 @@ STRUCT!{struct DXGI_ADAPTER_DESC1 {
     AdapterLuid: LUID,
     Flags: UINT,
 }}
-STRUCT!{struct DXGI_DISPLAY_COLOR_SPACE {
+STRUCT!{#[debug] struct DXGI_DISPLAY_COLOR_SPACE {
     PrimaryCoordinates: [[FLOAT; 2]; 8],
     WhitePoints: [[FLOAT; 2]; 16],
 }}

@@ -21,25 +21,25 @@ ENUM!{enum DXGI_USAGE {
     DXGI_USAGE_DISCARD_ON_PRESENT = 1 << (5 + 4),
     DXGI_USAGE_UNORDERED_ACCESS = 1 << (6 + 4),
 }}
-STRUCT!{struct DXGI_RGB {
+STRUCT!{#[debug] struct DXGI_RGB {
     Red: f32,
     Green: f32,
     Blue: f32,
 }}
 pub type DXGI_RGBA = D3DCOLORVALUE;
-STRUCT!{struct DXGI_GAMMA_CONTROL {
+STRUCT!{#[debug] struct DXGI_GAMMA_CONTROL {
     Scale: DXGI_RGB,
     Offset: DXGI_RGB,
     GammaCurve: [DXGI_RGB; 1025],
 }}
-STRUCT!{struct DXGI_GAMMA_CONTROL_CAPABILITIES {
+STRUCT!{#[debug] struct DXGI_GAMMA_CONTROL_CAPABILITIES {
     ScaleAndOffsetSupported: BOOL,
     MaxConvertedValue: f32,
     MinConvertedValue: f32,
     NumGammaControlPoints: UINT,
     ControlPointPositions: [f32; 1025],
 }}
-STRUCT!{struct DXGI_RATIONAL {
+STRUCT!{#[debug] struct DXGI_RATIONAL {
     Numerator: UINT,
     Denominator: UINT,
 }}
@@ -61,7 +61,7 @@ ENUM!{enum DXGI_MODE_ROTATION {
     DXGI_MODE_ROTATION_ROTATE180,
     DXGI_MODE_ROTATION_ROTATE270,
 }}
-STRUCT!{struct DXGI_MODE_DESC {
+STRUCT!{#[debug] struct DXGI_MODE_DESC {
     Width: UINT,
     Height: UINT,
     RefreshRate: DXGI_RATIONAL,
@@ -69,19 +69,19 @@ STRUCT!{struct DXGI_MODE_DESC {
     ScanlineOrdering: DXGI_MODE_SCANLINE_ORDER,
     Scaling: DXGI_MODE_SCALING,
 }}
-STRUCT!{struct DXGI_SAMPLE_DESC {
+STRUCT!{#[debug] struct DXGI_SAMPLE_DESC {
     Count: UINT,
     Quality: UINT,
 }}
-STRUCT!{struct DXGI_JPEG_DC_HUFFMAN_TABLE {
+STRUCT!{#[debug] struct DXGI_JPEG_DC_HUFFMAN_TABLE {
     CodeCounts: [BYTE; 12],
     CodeValues: [BYTE; 12],
 }}
-STRUCT!{struct DXGI_JPEG_AC_HUFFMAN_TABLE {
+STRUCT!{#[debug] struct DXGI_JPEG_AC_HUFFMAN_TABLE {
     CodeCounts: [BYTE; 16],
     CodeValues: [BYTE; 162],
 }}
-STRUCT!{struct DXGI_JPEG_QUANTIZATION_TABLE {
+STRUCT!{#[debug] struct DXGI_JPEG_QUANTIZATION_TABLE {
     Elements: [BYTE; 64],
 }}
 ENUM!{enum DXGI_COLOR_SPACE_TYPE {

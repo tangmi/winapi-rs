@@ -38,7 +38,7 @@ extern "system" {
         pChosenFeatureLevel: *mut D3D_FEATURE_LEVEL,
     ) -> HRESULT;
 }
-STRUCT!{struct D3D11_RESOURCE_FLAGS {
+STRUCT!{#[debug] struct D3D11_RESOURCE_FLAGS {
     BindFlags: UINT,
     MiscFlags: UINT,
     CPUAccessFlags: UINT,

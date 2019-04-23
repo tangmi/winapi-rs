@@ -245,7 +245,7 @@ extern "system" {
         ppBlob: *mut *mut ID3DBlob,
     ) -> HRESULT;
 }
-STRUCT!{struct D3D_SHADER_DATA {
+STRUCT!{#[debug] struct D3D_SHADER_DATA {
     pBytecode: LPCVOID,
     BytecodeLength: SIZE_T,
 }}

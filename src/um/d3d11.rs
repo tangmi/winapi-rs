@@ -392,7 +392,7 @@ ENUM!{enum D3D11_INPUT_CLASSIFICATION {
     D3D11_INPUT_PER_INSTANCE_DATA = 1,
 }}
 pub const D3D11_APPEND_ALIGNED_ELEMENT: DWORD = 0xffffffff;
-STRUCT!{struct D3D11_INPUT_ELEMENT_DESC {
+STRUCT!{#[debug] struct D3D11_INPUT_ELEMENT_DESC {
     SemanticName: LPCSTR,
     SemanticIndex: UINT,
     Format: DXGI_FORMAT,
@@ -412,7 +412,7 @@ ENUM!{enum D3D11_CULL_MODE {
     D3D11_CULL_FRONT = 2,
     D3D11_CULL_BACK = 3,
 }}
-STRUCT!{struct D3D11_SO_DECLARATION_ENTRY {
+STRUCT!{#[debug] struct D3D11_SO_DECLARATION_ENTRY {
     Stream: UINT,
     SemanticName: LPCSTR,
     SemanticIndex: UINT,
@@ -420,7 +420,7 @@ STRUCT!{struct D3D11_SO_DECLARATION_ENTRY {
     ComponentCount: BYTE,
     OutputSlot: BYTE,
 }}
-STRUCT!{struct D3D11_VIEWPORT {
+STRUCT!{#[debug] struct D3D11_VIEWPORT {
     TopLeftX: FLOAT,
     TopLeftY: FLOAT,
     Width: FLOAT,
@@ -428,13 +428,13 @@ STRUCT!{struct D3D11_VIEWPORT {
     MinDepth: FLOAT,
     MaxDepth: FLOAT,
 }}
-STRUCT!{struct D3D11_DRAW_INSTANCED_INDIRECT_ARGS {
+STRUCT!{#[debug] struct D3D11_DRAW_INSTANCED_INDIRECT_ARGS {
     VertexCountPerInstance: UINT,
     InstanceCount: UINT,
     StartVertexLocation: UINT,
     StartInstanceLocation: UINT,
 }}
-STRUCT!{struct D3D11_DRAW_INDEXED_INSTANCED_INDIRECT_ARGS {
+STRUCT!{#[debug] struct D3D11_DRAW_INDEXED_INSTANCED_INDIRECT_ARGS {
     IndexCountPerInstance: UINT,
     InstanceCount: UINT,
     StartIndexLocation: UINT,
@@ -537,7 +537,7 @@ ENUM!{enum D3D11_CLEAR_FLAG {
     D3D11_CLEAR_STENCIL = 0x2,
 }}
 pub type D3D11_RECT = RECT;
-STRUCT!{struct D3D11_BOX {
+STRUCT!{#[debug] struct D3D11_BOX {
     left: UINT,
     top: UINT,
     front: UINT,
@@ -589,13 +589,13 @@ ENUM!{enum D3D11_STENCIL_OP {
     D3D11_STENCIL_OP_INCR = 7,
     D3D11_STENCIL_OP_DECR = 8,
 }}
-STRUCT!{struct D3D11_DEPTH_STENCILOP_DESC {
+STRUCT!{#[debug] struct D3D11_DEPTH_STENCILOP_DESC {
     StencilFailOp: D3D11_STENCIL_OP,
     StencilDepthFailOp: D3D11_STENCIL_OP,
     StencilPassOp: D3D11_STENCIL_OP,
     StencilFunc: D3D11_COMPARISON_FUNC,
 }}
-STRUCT!{struct D3D11_DEPTH_STENCIL_DESC {
+STRUCT!{#[debug] struct D3D11_DEPTH_STENCIL_DESC {
     DepthEnable: BOOL,
     DepthWriteMask: D3D11_DEPTH_WRITE_MASK,
     DepthFunc: D3D11_COMPARISON_FUNC,
@@ -646,7 +646,7 @@ ENUM!{enum D3D11_COLOR_WRITE_ENABLE {
     D3D11_COLOR_WRITE_ENABLE_ALL = D3D11_COLOR_WRITE_ENABLE_RED | D3D11_COLOR_WRITE_ENABLE_GREEN
         | D3D11_COLOR_WRITE_ENABLE_BLUE | D3D11_COLOR_WRITE_ENABLE_ALPHA,
 }}
-STRUCT!{struct D3D11_RENDER_TARGET_BLEND_DESC {
+STRUCT!{#[debug] struct D3D11_RENDER_TARGET_BLEND_DESC {
     BlendEnable: BOOL,
     SrcBlend: D3D11_BLEND,
     DestBlend: D3D11_BLEND,
@@ -656,7 +656,7 @@ STRUCT!{struct D3D11_RENDER_TARGET_BLEND_DESC {
     BlendOpAlpha: D3D11_BLEND_OP,
     RenderTargetWriteMask: UINT8,
 }}
-STRUCT!{struct D3D11_BLEND_DESC {
+STRUCT!{#[debug] struct D3D11_BLEND_DESC {
     AlphaToCoverageEnable: BOOL,
     IndependentBlendEnable: BOOL,
     RenderTarget: [D3D11_RENDER_TARGET_BLEND_DESC; 8],
@@ -667,7 +667,7 @@ interface ID3D11BlendState(ID3D11BlendStateVtbl): ID3D11DeviceChild(ID3D11Device
         pDesc: *mut D3D11_BLEND_DESC,
     ) -> (),
 }}
-STRUCT!{struct D3D11_RASTERIZER_DESC {
+STRUCT!{#[debug] struct D3D11_RASTERIZER_DESC {
     FillMode: D3D11_FILL_MODE,
     CullMode: D3D11_CULL_MODE,
     FrontCounterClockwise: BOOL,
@@ -686,12 +686,12 @@ interface ID3D11RasterizerState(ID3D11RasterizerStateVtbl):
         pDesc: *mut D3D11_RASTERIZER_DESC,
     ) -> (),
 }}
-STRUCT!{struct D3D11_SUBRESOURCE_DATA {
+STRUCT!{#[debug] struct D3D11_SUBRESOURCE_DATA {
     pSysMem: *const c_void,
     SysMemPitch: UINT,
     SysMemSlicePitch: UINT,
 }}
-STRUCT!{struct D3D11_MAPPED_SUBRESOURCE {
+STRUCT!{#[debug] struct D3D11_MAPPED_SUBRESOURCE {
     pData: *mut c_void,
     RowPitch: UINT,
     DepthPitch: UINT,
@@ -706,7 +706,7 @@ interface ID3D11Resource(ID3D11ResourceVtbl): ID3D11DeviceChild(ID3D11DeviceChil
     ) -> (),
     fn GetEvictionPriority() -> UINT,
 }}
-STRUCT!{struct D3D11_BUFFER_DESC {
+STRUCT!{#[debug] struct D3D11_BUFFER_DESC {
     ByteWidth: UINT,
     Usage: D3D11_USAGE,
     BindFlags: UINT,
@@ -720,7 +720,7 @@ interface ID3D11Buffer(ID3D11BufferVtbl): ID3D11Resource(ID3D11ResourceVtbl) {
         pDesc: *mut D3D11_BUFFER_DESC,
     ) -> (),
 }}
-STRUCT!{struct D3D11_TEXTURE1D_DESC {
+STRUCT!{#[debug] struct D3D11_TEXTURE1D_DESC {
     Width: UINT,
     MipLevels: UINT,
     ArraySize: UINT,
@@ -736,7 +736,7 @@ interface ID3D11Texture1D(ID3D11Texture1DVtbl): ID3D11Resource(ID3D11ResourceVtb
         pDesc: *mut D3D11_TEXTURE1D_DESC,
     ) -> (),
 }}
-STRUCT!{struct D3D11_TEXTURE2D_DESC {
+STRUCT!{#[debug] struct D3D11_TEXTURE2D_DESC {
     Width: UINT,
     Height: UINT,
     MipLevels: UINT,
@@ -754,7 +754,7 @@ interface ID3D11Texture2D(ID3D11Texture2DVtbl): ID3D11Resource(ID3D11ResourceVtb
         pDesc: *mut D3D11_TEXTURE2D_DESC,
     ) -> (),
 }}
-STRUCT!{struct D3D11_TEXTURE3D_DESC {
+STRUCT!{#[debug] struct D3D11_TEXTURE3D_DESC {
     Width: UINT,
     Height: UINT,
     Depth: UINT,
@@ -795,56 +795,56 @@ UNION!{union D3D11_BUFFER_SRV_u2 {
     NumElements NumElements_mut: UINT,
     ElementWidth ElementWidth_mut: UINT,
 }}
-STRUCT!{struct D3D11_BUFFER_SRV {
+STRUCT!{#[debug] struct D3D11_BUFFER_SRV {
     u1: D3D11_BUFFER_SRV_u1,
     u2: D3D11_BUFFER_SRV_u2,
 }}
 ENUM!{enum D3D11_BUFFEREX_SRV_FLAG {
     D3D11_BUFFEREX_SRV_FLAG_RAW = 0x1,
 }}
-STRUCT!{struct D3D11_BUFFEREX_SRV {
+STRUCT!{#[debug] struct D3D11_BUFFEREX_SRV {
     FirstElement: UINT,
     NumElements: UINT,
     Flags: UINT,
 }}
-STRUCT!{struct D3D11_TEX1D_SRV {
+STRUCT!{#[debug] struct D3D11_TEX1D_SRV {
     MostDetailedMip: UINT,
     MipLevels: UINT,
 }}
-STRUCT!{struct D3D11_TEX1D_ARRAY_SRV {
-    MostDetailedMip: UINT,
-    MipLevels: UINT,
-    FirstArraySlice: UINT,
-    ArraySize: UINT,
-}}
-STRUCT!{struct D3D11_TEX2D_SRV {
-    MostDetailedMip: UINT,
-    MipLevels: UINT,
-}}
-STRUCT!{struct D3D11_TEX2D_ARRAY_SRV {
+STRUCT!{#[debug] struct D3D11_TEX1D_ARRAY_SRV {
     MostDetailedMip: UINT,
     MipLevels: UINT,
     FirstArraySlice: UINT,
     ArraySize: UINT,
 }}
-STRUCT!{struct D3D11_TEX3D_SRV {
+STRUCT!{#[debug] struct D3D11_TEX2D_SRV {
     MostDetailedMip: UINT,
     MipLevels: UINT,
 }}
-STRUCT!{struct D3D11_TEXCUBE_SRV {
+STRUCT!{#[debug] struct D3D11_TEX2D_ARRAY_SRV {
+    MostDetailedMip: UINT,
+    MipLevels: UINT,
+    FirstArraySlice: UINT,
+    ArraySize: UINT,
+}}
+STRUCT!{#[debug] struct D3D11_TEX3D_SRV {
     MostDetailedMip: UINT,
     MipLevels: UINT,
 }}
-STRUCT!{struct D3D11_TEXCUBE_ARRAY_SRV {
+STRUCT!{#[debug] struct D3D11_TEXCUBE_SRV {
+    MostDetailedMip: UINT,
+    MipLevels: UINT,
+}}
+STRUCT!{#[debug] struct D3D11_TEXCUBE_ARRAY_SRV {
     MostDetailedMip: UINT,
     MipLevels: UINT,
     First2DArrayFace: UINT,
     NumCubes: UINT,
 }}
-STRUCT!{struct D3D11_TEX2DMS_SRV {
+STRUCT!{#[debug] struct D3D11_TEX2DMS_SRV {
     UnusedField_NothingToDefine: UINT,
 }}
-STRUCT!{struct D3D11_TEX2DMS_ARRAY_SRV {
+STRUCT!{#[debug] struct D3D11_TEX2DMS_ARRAY_SRV {
     FirstArraySlice: UINT,
     ArraySize: UINT,
 }}
@@ -862,7 +862,7 @@ UNION!{union D3D11_SHADER_RESOURCE_VIEW_DESC_u {
     TextureCubeArray TextureCubeArray_mut: D3D11_TEXCUBE_ARRAY_SRV,
     BufferEx BufferEx_mut: D3D11_BUFFEREX_SRV,
 }}
-STRUCT!{struct D3D11_SHADER_RESOURCE_VIEW_DESC {
+STRUCT!{#[debug] struct D3D11_SHADER_RESOURCE_VIEW_DESC {
     Format: DXGI_FORMAT,
     ViewDimension: D3D11_SRV_DIMENSION,
     u: D3D11_SHADER_RESOURCE_VIEW_DESC_u,
@@ -883,34 +883,34 @@ UNION!{union D3D11_BUFFER_RTV_u2 {
     NumElements NumElements_mut: UINT,
     ElementWidth ElementWidth_mut: UINT,
 }}
-STRUCT!{struct D3D11_BUFFER_RTV {
+STRUCT!{#[debug] struct D3D11_BUFFER_RTV {
     u1: D3D11_BUFFER_RTV_u1,
     u2: D3D11_BUFFER_RTV_u2,
 }}
-STRUCT!{struct D3D11_TEX1D_RTV {
+STRUCT!{#[debug] struct D3D11_TEX1D_RTV {
     MipSlice: UINT,
 }}
-STRUCT!{struct D3D11_TEX1D_ARRAY_RTV {
+STRUCT!{#[debug] struct D3D11_TEX1D_ARRAY_RTV {
     MipSlice: UINT,
     FirstArraySlice: UINT,
     ArraySize: UINT,
 }}
-STRUCT!{struct D3D11_TEX2D_RTV {
+STRUCT!{#[debug] struct D3D11_TEX2D_RTV {
     MipSlice: UINT,
 }}
-STRUCT!{struct D3D11_TEX2DMS_RTV {
+STRUCT!{#[debug] struct D3D11_TEX2DMS_RTV {
     UnusedField_NothingToDefine: UINT,
 }}
-STRUCT!{struct D3D11_TEX2D_ARRAY_RTV {
+STRUCT!{#[debug] struct D3D11_TEX2D_ARRAY_RTV {
     MipSlice: UINT,
     FirstArraySlice: UINT,
     ArraySize: UINT,
 }}
-STRUCT!{struct D3D11_TEX2DMS_ARRAY_RTV {
+STRUCT!{#[debug] struct D3D11_TEX2DMS_ARRAY_RTV {
     FirstArraySlice: UINT,
     ArraySize: UINT,
 }}
-STRUCT!{struct D3D11_TEX3D_RTV {
+STRUCT!{#[debug] struct D3D11_TEX3D_RTV {
     MipSlice: UINT,
     FirstWSlice: UINT,
     WSize: UINT,
@@ -926,7 +926,7 @@ UNION!{union D3D11_RENDER_TARGET_VIEW_DESC_u {
     Texture2DMSArray Texture2DMSArray_mut: D3D11_TEX2DMS_ARRAY_RTV,
     Texture3D Texture3D_mut: D3D11_TEX3D_RTV,
 }}
-STRUCT!{struct D3D11_RENDER_TARGET_VIEW_DESC {
+STRUCT!{#[debug] struct D3D11_RENDER_TARGET_VIEW_DESC {
     Format: DXGI_FORMAT,
     ViewDimension: D3D11_RTV_DIMENSION,
     u: D3D11_RENDER_TARGET_VIEW_DESC_u,
@@ -937,26 +937,26 @@ interface ID3D11RenderTargetView(ID3D11RenderTargetViewVtbl): ID3D11View(ID3D11V
         pDesc: *mut D3D11_RENDER_TARGET_VIEW_DESC,
     ) -> (),
 }}
-STRUCT!{struct D3D11_TEX1D_DSV {
+STRUCT!{#[debug] struct D3D11_TEX1D_DSV {
     MipSlice: UINT,
 }}
-STRUCT!{struct D3D11_TEX1D_ARRAY_DSV {
-    MipSlice: UINT,
-    FirstArraySlice: UINT,
-    ArraySize: UINT,
-}}
-STRUCT!{struct D3D11_TEX2D_DSV {
-    MipSlice: UINT,
-}}
-STRUCT!{struct D3D11_TEX2D_ARRAY_DSV {
+STRUCT!{#[debug] struct D3D11_TEX1D_ARRAY_DSV {
     MipSlice: UINT,
     FirstArraySlice: UINT,
     ArraySize: UINT,
 }}
-STRUCT!{struct D3D11_TEX2DMS_DSV {
+STRUCT!{#[debug] struct D3D11_TEX2D_DSV {
+    MipSlice: UINT,
+}}
+STRUCT!{#[debug] struct D3D11_TEX2D_ARRAY_DSV {
+    MipSlice: UINT,
+    FirstArraySlice: UINT,
+    ArraySize: UINT,
+}}
+STRUCT!{#[debug] struct D3D11_TEX2DMS_DSV {
     UnusedField_NothingToDefine: UINT,
 }}
-STRUCT!{struct D3D11_TEX2DMS_ARRAY_DSV {
+STRUCT!{#[debug] struct D3D11_TEX2DMS_ARRAY_DSV {
     FirstArraySlice: UINT,
     ArraySize: UINT,
 }}
@@ -973,7 +973,7 @@ UNION!{union D3D11_DEPTH_STENCIL_VIEW_DESC_u {
     Texture2DMS Texture2DMS_mut: D3D11_TEX2DMS_DSV,
     Texture2DMSArray Texture2DMSArray_mut: D3D11_TEX2DMS_ARRAY_DSV,
 }}
-STRUCT!{struct D3D11_DEPTH_STENCIL_VIEW_DESC {
+STRUCT!{#[debug] struct D3D11_DEPTH_STENCIL_VIEW_DESC {
     Format: DXGI_FORMAT,
     ViewDimension: D3D11_DSV_DIMENSION,
     Flags: UINT,
@@ -990,28 +990,28 @@ ENUM!{enum D3D11_BUFFER_UAV_FLAG {
     D3D11_BUFFER_UAV_FLAG_APPEND = 0x2,
     D3D11_BUFFER_UAV_FLAG_COUNTER = 0x4,
 }}
-STRUCT!{struct D3D11_BUFFER_UAV {
+STRUCT!{#[debug] struct D3D11_BUFFER_UAV {
     FirstElement: UINT,
     NumElements: UINT,
     Flags: UINT,
 }}
-STRUCT!{struct D3D11_TEX1D_UAV {
+STRUCT!{#[debug] struct D3D11_TEX1D_UAV {
     MipSlice: UINT,
 }}
-STRUCT!{struct D3D11_TEX1D_ARRAY_UAV {
-    MipSlice: UINT,
-    FirstArraySlice: UINT,
-    ArraySize: UINT,
-}}
-STRUCT!{struct D3D11_TEX2D_UAV {
-    MipSlice: UINT,
-}}
-STRUCT!{struct D3D11_TEX2D_ARRAY_UAV {
+STRUCT!{#[debug] struct D3D11_TEX1D_ARRAY_UAV {
     MipSlice: UINT,
     FirstArraySlice: UINT,
     ArraySize: UINT,
 }}
-STRUCT!{struct D3D11_TEX3D_UAV {
+STRUCT!{#[debug] struct D3D11_TEX2D_UAV {
+    MipSlice: UINT,
+}}
+STRUCT!{#[debug] struct D3D11_TEX2D_ARRAY_UAV {
+    MipSlice: UINT,
+    FirstArraySlice: UINT,
+    ArraySize: UINT,
+}}
+STRUCT!{#[debug] struct D3D11_TEX3D_UAV {
     MipSlice: UINT,
     FirstWSlice: UINT,
     WSize: UINT,
@@ -1025,7 +1025,7 @@ UNION!{union D3D11_UNORDERED_ACCESS_VIEW_DESC_u {
     Texture2DArray Texture2DArray_mut: D3D11_TEX2D_ARRAY_UAV,
     Texture3D Texture3D_mut: D3D11_TEX3D_UAV,
 }}
-STRUCT!{struct D3D11_UNORDERED_ACCESS_VIEW_DESC {
+STRUCT!{#[debug] struct D3D11_UNORDERED_ACCESS_VIEW_DESC {
     Format: DXGI_FORMAT,
     ViewDimension: D3D11_UAV_DIMENSION,
     u: D3D11_UNORDERED_ACCESS_VIEW_DESC_u,
@@ -1120,7 +1120,7 @@ ENUM!{enum D3D11_TEXTURE_ADDRESS_MODE {
     D3D11_TEXTURE_ADDRESS_BORDER = 4,
     D3D11_TEXTURE_ADDRESS_MIRROR_ONCE = 5,
 }}
-STRUCT!{struct D3D11_SAMPLER_DESC {
+STRUCT!{#[debug] struct D3D11_SAMPLER_DESC {
     Filter: D3D11_FILTER,
     AddressU: D3D11_TEXTURE_ADDRESS_MODE,
     AddressV: D3D11_TEXTURE_ADDRESS_MODE,
@@ -1213,7 +1213,7 @@ ENUM!{enum D3D11_QUERY {
 ENUM!{enum D3D11_QUERY_MISC_FLAG {
     D3D11_QUERY_MISC_PREDICATEHINT = 0x1,
 }}
-STRUCT!{struct D3D11_QUERY_DESC {
+STRUCT!{#[debug] struct D3D11_QUERY_DESC {
     Query: D3D11_QUERY,
     MiscFlags: UINT,
 }}
@@ -1225,11 +1225,11 @@ interface ID3D11Query(ID3D11QueryVtbl): ID3D11Asynchronous(ID3D11AsynchronousVtb
 }}
 RIDL!{#[uuid(0x9eb576dd, 0x9f77, 0x4d86, 0x81, 0xaa, 0x8b, 0xab, 0x5f, 0xe4, 0x90, 0xe2)]
 interface ID3D11Predicate(ID3D11PredicateVtbl): ID3D11Query(ID3D11QueryVtbl) {}}
-STRUCT!{struct D3D11_QUERY_DATA_TIMESTAMP_DISJOINT {
+STRUCT!{#[debug] struct D3D11_QUERY_DATA_TIMESTAMP_DISJOINT {
     Frequency: UINT64,
     Disjoint: BOOL,
 }}
-STRUCT!{struct D3D11_QUERY_DATA_PIPELINE_STATISTICS {
+STRUCT!{#[debug] struct D3D11_QUERY_DATA_PIPELINE_STATISTICS {
     IAVertices: UINT64,
     IAPrimitives: UINT64,
     VSInvocations: UINT64,
@@ -1242,7 +1242,7 @@ STRUCT!{struct D3D11_QUERY_DATA_PIPELINE_STATISTICS {
     DSInvocations: UINT64,
     CSInvocations: UINT64,
 }}
-STRUCT!{struct D3D11_QUERY_DATA_SO_STATISTICS {
+STRUCT!{#[debug] struct D3D11_QUERY_DATA_SO_STATISTICS {
     NumPrimitivesWritten: UINT64,
     PrimitivesStorageNeeded: UINT64,
 }}
@@ -1255,11 +1255,11 @@ ENUM!{enum D3D11_COUNTER_TYPE {
     D3D11_COUNTER_TYPE_UINT32 = D3D11_COUNTER_TYPE_UINT16 + 1u32,
     D3D11_COUNTER_TYPE_UINT64 = D3D11_COUNTER_TYPE_UINT32 + 1u32,
 }}
-STRUCT!{struct D3D11_COUNTER_DESC {
+STRUCT!{#[debug] struct D3D11_COUNTER_DESC {
     Counter: D3D11_COUNTER,
     MiscFlags: UINT,
 }}
-STRUCT!{struct D3D11_COUNTER_INFO {
+STRUCT!{#[debug] struct D3D11_COUNTER_INFO {
     LastDeviceDependentCounter: D3D11_COUNTER,
     NumSimultaneousCounters: UINT,
     NumDetectableParallelUnits: UINT8,
@@ -1278,7 +1278,7 @@ ENUM!{enum D3D11_DEVICE_CONTEXT_TYPE {
     D3D11_DEVICE_CONTEXT_IMMEDIATE = 0,
     D3D11_DEVICE_CONTEXT_DEFERRED = D3D11_DEVICE_CONTEXT_IMMEDIATE + 1u32,
 }}
-STRUCT!{struct D3D11_CLASS_INSTANCE_DESC {
+STRUCT!{#[debug] struct D3D11_CLASS_INSTANCE_DESC {
     InstanceId: UINT,
     InstanceIndex: UINT,
     TypeId: UINT,
@@ -1344,25 +1344,25 @@ ENUM!{enum D3D11_FEATURE {
     D3D11_FEATURE_D3D11_OPTIONS3 = D3D11_FEATURE_D3D11_OPTIONS2 + 1u32,
     D3D11_FEATURE_GPU_VIRTUAL_ADDRESS_SUPPORT = D3D11_FEATURE_D3D11_OPTIONS3 + 1u32,
 }}
-STRUCT!{struct D3D11_FEATURE_DATA_THREADING {
+STRUCT!{#[debug] struct D3D11_FEATURE_DATA_THREADING {
     DriverConcurrentCreates: BOOL,
     DriverCommandLists: BOOL,
 }}
-STRUCT!{struct D3D11_FEATURE_DATA_DOUBLES {
+STRUCT!{#[debug] struct D3D11_FEATURE_DATA_DOUBLES {
     DoublePrecisionFloatShaderOps: BOOL,
 }}
-STRUCT!{struct D3D11_FEATURE_DATA_FORMAT_SUPPORT {
+STRUCT!{#[debug] struct D3D11_FEATURE_DATA_FORMAT_SUPPORT {
     InFormat: DXGI_FORMAT,
     OutFormatSupport: UINT,
 }}
-STRUCT!{struct D3D11_FEATURE_DATA_FORMAT_SUPPORT2 {
+STRUCT!{#[debug] struct D3D11_FEATURE_DATA_FORMAT_SUPPORT2 {
     InFormat: DXGI_FORMAT,
     OutFormatSupport2: UINT,
 }}
-STRUCT!{struct D3D11_FEATURE_DATA_D3D10_X_HARDWARE_OPTIONS {
+STRUCT!{#[debug] struct D3D11_FEATURE_DATA_D3D10_X_HARDWARE_OPTIONS {
     ComputeShaders_Plus_RawAndStructuredBuffers_Via_Shader_4_x: BOOL,
 }}
-STRUCT!{struct D3D11_FEATURE_DATA_D3D11_OPTIONS {
+STRUCT!{#[debug] struct D3D11_FEATURE_DATA_D3D11_OPTIONS {
     OutputMergerLogicOp: BOOL,
     UAVOnlyRenderingForcedSampleCount: BOOL,
     DiscardAPIsSeenByDriver: BOOL,
@@ -1378,20 +1378,20 @@ STRUCT!{struct D3D11_FEATURE_DATA_D3D11_OPTIONS {
     ExtendedDoublesShaderInstructions: BOOL,
     ExtendedResourceSharing: BOOL,
 }}
-STRUCT!{struct D3D11_FEATURE_DATA_ARCHITECTURE_INFO {
+STRUCT!{#[debug] struct D3D11_FEATURE_DATA_ARCHITECTURE_INFO {
     TileBasedDeferredRenderer: BOOL,
 }}
-STRUCT!{struct D3D11_FEATURE_DATA_D3D9_OPTIONS {
+STRUCT!{#[debug] struct D3D11_FEATURE_DATA_D3D9_OPTIONS {
     FullNonPow2TextureSupport: BOOL,
 }}
-STRUCT!{struct D3D11_FEATURE_DATA_D3D9_SHADOW_SUPPORT {
+STRUCT!{#[debug] struct D3D11_FEATURE_DATA_D3D9_SHADOW_SUPPORT {
     SupportsDepthAsTextureWithLessEqualComparisonFilter: BOOL,
 }}
 ENUM!{enum D3D11_SHADER_MIN_PRECISION_SUPPORT {
     D3D11_SHADER_MIN_PRECISION_10_BIT = 0x1,
     D3D11_SHADER_MIN_PRECISION_16_BIT = 0x2,
 }}
-STRUCT!{struct D3D11_FEATURE_DATA_SHADER_MIN_PRECISION_SUPPORT {
+STRUCT!{#[debug] struct D3D11_FEATURE_DATA_SHADER_MIN_PRECISION_SUPPORT {
     PixelShaderMinPrecision: UINT,
     AllOtherShaderStagesMinPrecision: UINT,
 }}
@@ -1401,19 +1401,19 @@ ENUM!{enum D3D11_TILED_RESOURCES_TIER {
     D3D11_TILED_RESOURCES_TIER_2 = 2,
     D3D11_TILED_RESOURCES_TIER_3 = 3,
 }}
-STRUCT!{struct D3D11_FEATURE_DATA_D3D11_OPTIONS1 {
+STRUCT!{#[debug] struct D3D11_FEATURE_DATA_D3D11_OPTIONS1 {
     TiledResourcesTier: D3D11_TILED_RESOURCES_TIER,
     MinMaxFiltering: BOOL,
     ClearViewAlsoSupportsDepthOnlyFormats: BOOL,
     MapOnDefaultBuffers: BOOL,
 }}
-STRUCT!{struct D3D11_FEATURE_DATA_D3D9_SIMPLE_INSTANCING_SUPPORT {
+STRUCT!{#[debug] struct D3D11_FEATURE_DATA_D3D9_SIMPLE_INSTANCING_SUPPORT {
     SimpleInstancingSupported: BOOL,
 }}
-STRUCT!{struct D3D11_FEATURE_DATA_MARKER_SUPPORT {
+STRUCT!{#[debug] struct D3D11_FEATURE_DATA_MARKER_SUPPORT {
     Profile: BOOL,
 }}
-STRUCT!{struct D3D11_FEATURE_DATA_D3D9_OPTIONS1 {
+STRUCT!{#[debug] struct D3D11_FEATURE_DATA_D3D9_OPTIONS1 {
     FullNonPow2TextureSupported: BOOL,
     DepthAsTextureWithLessEqualComparisonFilterSupported: BOOL,
     SimpleInstancingSupported: BOOL,
@@ -1425,7 +1425,7 @@ ENUM!{enum D3D11_CONSERVATIVE_RASTERIZATION_TIER {
     D3D11_CONSERVATIVE_RASTERIZATION_TIER_2 = 2,
     D3D11_CONSERVATIVE_RASTERIZATION_TIER_3 = 3,
 }}
-STRUCT!{struct D3D11_FEATURE_DATA_D3D11_OPTIONS2 {
+STRUCT!{#[debug] struct D3D11_FEATURE_DATA_D3D11_OPTIONS2 {
     PSSpecifiedStencilRefSupported: BOOL,
     TypedUAVLoadAdditionalFormats: BOOL,
     ROVsSupported: BOOL,
@@ -1435,10 +1435,10 @@ STRUCT!{struct D3D11_FEATURE_DATA_D3D11_OPTIONS2 {
     StandardSwizzle: BOOL,
     UnifiedMemoryArchitecture: BOOL,
 }}
-STRUCT!{struct D3D11_FEATURE_DATA_D3D11_OPTIONS3 {
+STRUCT!{#[debug] struct D3D11_FEATURE_DATA_D3D11_OPTIONS3 {
     VPAndRTArrayIndexFromAnyShaderFeedingRasterizer: BOOL,
 }}
-STRUCT!{struct D3D11_FEATURE_DATA_GPU_VIRTUAL_ADDRESS_SUPPORT {
+STRUCT!{#[debug] struct D3D11_FEATURE_DATA_GPU_VIRTUAL_ADDRESS_SUPPORT {
     MaxGPUVirtualAddressBitsPerResource: UINT,
     MaxGPUVirtualAddressBitsPerProcess: UINT,
 }}
@@ -2016,13 +2016,13 @@ DEFINE_GUID!{D3D11_DECODER_PROFILE_VP9_VLD_PROFILE0,
     0x463707f8, 0xa1d0, 0x4585, 0x87, 0x6d, 0x83, 0xaa, 0x6d, 0x60, 0xb8, 0x9e}
 DEFINE_GUID!{D3D11_DECODER_PROFILE_VP8_VLD,
     0x90b899ea, 0x3a62, 0x4705, 0x88, 0xb3, 0x8d, 0xf0, 0x4b, 0x27, 0x44, 0xe7}
-STRUCT!{struct D3D11_VIDEO_DECODER_DESC {
+STRUCT!{#[debug] struct D3D11_VIDEO_DECODER_DESC {
     Guid: GUID,
     SampleWidth: UINT,
     SampleHeight: UINT,
     OutputFormat: DXGI_FORMAT,
 }}
-STRUCT!{struct D3D11_VIDEO_DECODER_CONFIG {
+STRUCT!{#[debug] struct D3D11_VIDEO_DECODER_CONFIG {
     guidConfigBitstreamEncryption: GUID,
     guidConfigMBcontrolEncryption: GUID,
     guidConfigResidDiffEncryption: GUID,
@@ -2052,16 +2052,16 @@ ENUM!{enum D3D11_VIDEO_DECODER_BUFFER_TYPE {
     D3D11_VIDEO_DECODER_BUFFER_MOTION_VECTOR = 7,
     D3D11_VIDEO_DECODER_BUFFER_FILM_GRAIN = 8,
 }}
-STRUCT!{struct D3D11_AES_CTR_IV {
+STRUCT!{#[debug] struct D3D11_AES_CTR_IV {
     IV: UINT64,
     Count: UINT64,
 }}
-STRUCT!{struct D3D11_ENCRYPTED_BLOCK_INFO {
+STRUCT!{#[debug] struct D3D11_ENCRYPTED_BLOCK_INFO {
     NumEncryptedBytesAtBeginning: UINT,
     NumBytesInSkipPattern: UINT,
     NumBytesInEncryptPattern: UINT,
 }}
-STRUCT!{struct D3D11_VIDEO_DECODER_BUFFER_DESC {
+STRUCT!{#[debug] struct D3D11_VIDEO_DECODER_BUFFER_DESC {
     BufferType: D3D11_VIDEO_DECODER_BUFFER_TYPE,
     BufferIndex: UINT,
     DataOffset: UINT,
@@ -2077,7 +2077,7 @@ STRUCT!{struct D3D11_VIDEO_DECODER_BUFFER_DESC {
     PartialEncryption: BOOL,
     EncryptedBlockInfo: D3D11_ENCRYPTED_BLOCK_INFO,
 }}
-STRUCT!{struct D3D11_VIDEO_DECODER_EXTENSION {
+STRUCT!{#[debug] struct D3D11_VIDEO_DECODER_EXTENSION {
     Function: UINT,
     pPrivateInputData: *mut c_void,
     PrivateInputDataSize: UINT,
@@ -2153,7 +2153,7 @@ ENUM!{enum D3D11_VIDEO_PROCESSOR_STEREO_CAPS {
     D3D11_VIDEO_PROCESSOR_STEREO_CAPS_CHECKERBOARD = 0x8,
     D3D11_VIDEO_PROCESSOR_STEREO_CAPS_FLIP_MODE = 0x10,
 }}
-STRUCT!{struct D3D11_VIDEO_PROCESSOR_CAPS {
+STRUCT!{#[debug] struct D3D11_VIDEO_PROCESSOR_CAPS {
     DeviceCaps: UINT,
     FeatureCaps: UINT,
     FilterCaps: UINT,
@@ -2184,7 +2184,7 @@ ENUM!{enum D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS {
     D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_222222222223 = 0x100,
     D3D11_VIDEO_PROCESSOR_ITELECINE_CAPS_OTHER = 0x80000000,
 }}
-STRUCT!{struct D3D11_VIDEO_PROCESSOR_RATE_CONVERSION_CAPS {
+STRUCT!{#[debug] struct D3D11_VIDEO_PROCESSOR_RATE_CONVERSION_CAPS {
     PastFrames: UINT,
     FutureFrames: UINT,
     ProcessorCaps: UINT,
@@ -2214,13 +2214,13 @@ DEFINE_GUID!{D3D11_DECODER_ENCRYPTION_HW_CENC,
     0x89d6ac4f, 0x09f2, 0x4229, 0xb2, 0xcd, 0x37, 0x74, 0x0a, 0x6d, 0xfd, 0x81}
 DEFINE_GUID!{D3D11_KEY_EXCHANGE_HW_PROTECTION,
     0xb1170d8a, 0x628d, 0x4da3, 0xad, 0x3b, 0x82, 0xdd, 0xb0, 0x8b, 0x49, 0x70}
-STRUCT!{struct D3D11_VIDEO_CONTENT_PROTECTION_CAPS {
+STRUCT!{#[debug] struct D3D11_VIDEO_CONTENT_PROTECTION_CAPS {
     Caps: UINT,
     KeyExchangeTypeCount: UINT,
     BlockAlignmentSize: UINT,
     ProtectedMemorySize: ULONGLONG,
 }}
-STRUCT!{struct D3D11_VIDEO_PROCESSOR_CUSTOM_RATE {
+STRUCT!{#[debug] struct D3D11_VIDEO_PROCESSOR_CUSTOM_RATE {
     CustomRate: DXGI_RATIONAL,
     OutputFrames: UINT,
     InputInterlaced: BOOL,
@@ -2236,7 +2236,7 @@ ENUM!{enum D3D11_VIDEO_PROCESSOR_FILTER {
     D3D11_VIDEO_PROCESSOR_FILTER_ANAMORPHIC_SCALING = 6,
     D3D11_VIDEO_PROCESSOR_FILTER_STEREO_ADJUSTMENT = 7,
 }}
-STRUCT!{struct D3D11_VIDEO_PROCESSOR_FILTER_RANGE {
+STRUCT!{#[debug] struct D3D11_VIDEO_PROCESSOR_FILTER_RANGE {
     Minimum: c_int,
     Maximum: c_int,
     Default: c_int,
@@ -2252,7 +2252,7 @@ ENUM!{enum D3D11_VIDEO_USAGE {
     D3D11_VIDEO_USAGE_OPTIMAL_SPEED = 1,
     D3D11_VIDEO_USAGE_OPTIMAL_QUALITY = 2,
 }}
-STRUCT!{struct D3D11_VIDEO_PROCESSOR_CONTENT_DESC {
+STRUCT!{#[debug] struct D3D11_VIDEO_PROCESSOR_CONTENT_DESC {
     InputFrameFormat: D3D11_VIDEO_FRAME_FORMAT,
     InputFrameRate: DXGI_RATIONAL,
     InputWidth: UINT,
@@ -2289,13 +2289,13 @@ interface ID3D11VideoProcessorEnumerator(ID3D11VideoProcessorEnumeratorVtbl):
         Range: *mut D3D11_VIDEO_PROCESSOR_FILTER_RANGE,
     ) -> HRESULT,
 }}
-STRUCT!{struct D3D11_VIDEO_COLOR_RGBA {
+STRUCT!{#[debug] struct D3D11_VIDEO_COLOR_RGBA {
     R: c_float,
     G: c_float,
     B: c_float,
     A: c_float,
 }}
-STRUCT!{struct D3D11_VIDEO_COLOR_YCbCrA {
+STRUCT!{#[debug] struct D3D11_VIDEO_COLOR_YCbCrA {
     Y: c_float,
     Cb: c_float,
     Cr: c_float,
@@ -2311,7 +2311,7 @@ ENUM!{enum D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE {
     D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE_16_235 = 1,
     D3D11_VIDEO_PROCESSOR_NOMINAL_RANGE_0_255 = 2,
 }}
-STRUCT!{struct D3D11_VIDEO_PROCESSOR_COLOR_SPACE {
+STRUCT!{#[debug] struct D3D11_VIDEO_PROCESSOR_COLOR_SPACE {
     bitfield: UINT,
 }}
 BITFIELD!{D3D11_VIDEO_PROCESSOR_COLOR_SPACE bitfield: UINT [
@@ -2353,7 +2353,7 @@ ENUM!{enum D3D11_VIDEO_PROCESSOR_ROTATION {
     D3D11_VIDEO_PROCESSOR_ROTATION_180 = 2,
     D3D11_VIDEO_PROCESSOR_ROTATION_270 = 3,
 }}
-STRUCT!{struct D3D11_VIDEO_PROCESSOR_STREAM {
+STRUCT!{#[debug] struct D3D11_VIDEO_PROCESSOR_STREAM {
     Enable: BOOL,
     OutputIndex: UINT,
     InputFrameOrField: UINT,
@@ -2376,7 +2376,7 @@ interface ID3D11VideoProcessor(ID3D11VideoProcessorVtbl):
         pCaps: *mut D3D11_VIDEO_PROCESSOR_RATE_CONVERSION_CAPS,
     ) -> (),
 }}
-STRUCT!{struct D3D11_OMAC {
+STRUCT!{#[debug] struct D3D11_OMAC {
     Omac: [BYTE; 16],
 }}
 ENUM!{enum D3D11_AUTHENTICATED_CHANNEL_TYPE {
@@ -2434,12 +2434,12 @@ DEFINE_GUID!{D3D11_AUTHENTICATED_CONFIGURE_SHARED_RESOURCE,
     0x0772d047, 0x1b40, 0x48e8, 0x9c, 0xa6, 0xb5, 0xf5, 0x10, 0xde, 0x9f, 0x01}
 DEFINE_GUID!{D3D11_AUTHENTICATED_CONFIGURE_ENCRYPTION_WHEN_ACCESSIBLE,
     0x41fff286, 0x6ae0, 0x4d43, 0x9d, 0x55, 0xa4, 0x6e, 0x9e, 0xfd, 0x15, 0x8a}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_INPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_INPUT {
     QueryType: GUID,
     hChannel: HANDLE,
     SequenceNumber: UINT,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_OUTPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_OUTPUT {
     omac: D3D11_OMAC,
     QueryType: GUID,
     hChannel: HANDLE,
@@ -2447,36 +2447,36 @@ STRUCT!{struct D3D11_AUTHENTICATED_QUERY_OUTPUT {
     ReturnCode: HRESULT,
 }}
 //FIXME bitfield
-STRUCT!{struct D3D11_AUTHENTICATED_PROTECTION_FLAGS {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_PROTECTION_FLAGS {
     u: UINT,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_PROTECTION_OUTPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_PROTECTION_OUTPUT {
     Output: D3D11_AUTHENTICATED_QUERY_OUTPUT,
     ProtectionFlags: D3D11_AUTHENTICATED_PROTECTION_FLAGS,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_CHANNEL_TYPE_OUTPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_CHANNEL_TYPE_OUTPUT {
     Output: D3D11_AUTHENTICATED_QUERY_OUTPUT,
     ChannelType: D3D11_AUTHENTICATED_CHANNEL_TYPE,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_DEVICE_HANDLE_OUTPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_DEVICE_HANDLE_OUTPUT {
     Output: D3D11_AUTHENTICATED_QUERY_OUTPUT,
     DeviceHandle: HANDLE,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_CRYPTO_SESSION_INPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_CRYPTO_SESSION_INPUT {
     Input: D3D11_AUTHENTICATED_QUERY_INPUT,
     DecoderHandle: HANDLE,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_CRYPTO_SESSION_OUTPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_CRYPTO_SESSION_OUTPUT {
     Output: D3D11_AUTHENTICATED_QUERY_OUTPUT,
     DecoderHandle: HANDLE,
     CryptoSessionHandle: HANDLE,
     DeviceHandle: HANDLE,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_RESTRICTED_SHARED_RESOURCE_PROCESS_COUNT_OUTPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_RESTRICTED_SHARED_RESOURCE_PROCESS_COUNT_OUTPUT {
     Output: D3D11_AUTHENTICATED_QUERY_OUTPUT,
     RestrictedSharedResourceProcessCount: UINT,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_RESTRICTED_SHARED_RESOURCE_PROCESS_INPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_RESTRICTED_SHARED_RESOURCE_PROCESS_INPUT {
     Input: D3D11_AUTHENTICATED_QUERY_INPUT,
     ProcessIndex: UINT,
 }}
@@ -2485,34 +2485,34 @@ ENUM!{enum D3D11_AUTHENTICATED_PROCESS_IDENTIFIER_TYPE {
     DD3D11_PROCESSIDTYPE_DWM = 1,
     DD3D11_PROCESSIDTYPE_HANDLE = 2,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_RESTRICTED_SHARED_RESOURCE_PROCESS_OUTPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_RESTRICTED_SHARED_RESOURCE_PROCESS_OUTPUT {
     Output: D3D11_AUTHENTICATED_QUERY_OUTPUT,
     ProcessIndex: UINT,
     ProcessIdentifier: D3D11_AUTHENTICATED_PROCESS_IDENTIFIER_TYPE,
     ProcessHandle: HANDLE,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_UNRESTRICTED_PROTECTED_SHARED_RESOURCE_COUNT_OUTPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_UNRESTRICTED_PROTECTED_SHARED_RESOURCE_COUNT_OUTPUT {
     Output: D3D11_AUTHENTICATED_QUERY_OUTPUT,
     UnrestrictedProtectedSharedResourceCount: UINT,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_OUTPUT_ID_COUNT_INPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_OUTPUT_ID_COUNT_INPUT {
     Input: D3D11_AUTHENTICATED_QUERY_INPUT,
     DeviceHandle: HANDLE,
     CryptoSessionHandle: HANDLE,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_OUTPUT_ID_COUNT_OUTPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_OUTPUT_ID_COUNT_OUTPUT {
     Output: D3D11_AUTHENTICATED_QUERY_OUTPUT,
     DeviceHandle: HANDLE,
     CryptoSessionHandle: HANDLE,
     OutputIDCount: UINT,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_OUTPUT_ID_INPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_OUTPUT_ID_INPUT {
     Input: D3D11_AUTHENTICATED_QUERY_INPUT,
     DeviceHandle: HANDLE,
     CryptoSessionHandle: HANDLE,
     OutputIDIndex: UINT,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_OUTPUT_ID_OUTPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_OUTPUT_ID_OUTPUT {
     Output: D3D11_AUTHENTICATED_QUERY_OUTPUT,
     DeviceHandle: HANDLE,
     CryptoSessionHandle: HANDLE,
@@ -2532,64 +2532,64 @@ ENUM!{enum D3D11_BUS_TYPE {
     D3D11_BUS_IMPL_MODIFIER_DAUGHTER_BOARD_CONNECTOR_INSIDE_OF_NUAE = 0x50000,
     D3D11_BUS_IMPL_MODIFIER_NON_STANDARD = 0x80000000,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_ACESSIBILITY_OUTPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_ACESSIBILITY_OUTPUT {
     Output: D3D11_AUTHENTICATED_QUERY_OUTPUT,
     BusType: D3D11_BUS_TYPE,
     AccessibleInContiguousBlocks: BOOL,
     AccessibleInNonContiguousBlocks: BOOL,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_ACCESSIBILITY_ENCRYPTION_GUID_COUNT_OUTPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_ACCESSIBILITY_ENCRYPTION_GUID_COUNT_OUTPUT {
     Output: D3D11_AUTHENTICATED_QUERY_OUTPUT,
     EncryptionGuidCount: UINT,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_ACCESSIBILITY_ENCRYPTION_GUID_INPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_ACCESSIBILITY_ENCRYPTION_GUID_INPUT {
     Input: D3D11_AUTHENTICATED_QUERY_INPUT,
     EncryptionGuidIndex: UINT,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_ACCESSIBILITY_ENCRYPTION_GUID_OUTPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_ACCESSIBILITY_ENCRYPTION_GUID_OUTPUT {
     Output: D3D11_AUTHENTICATED_QUERY_OUTPUT,
     EncryptionGuidIndex: UINT,
     EncryptionGuid: GUID,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_QUERY_CURRENT_ACCESSIBILITY_ENCRYPTION_OUTPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_QUERY_CURRENT_ACCESSIBILITY_ENCRYPTION_OUTPUT {
     Output: D3D11_AUTHENTICATED_QUERY_OUTPUT,
     EncryptionGuid: GUID,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_CONFIGURE_INPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_CONFIGURE_INPUT {
     omac: D3D11_OMAC,
     ConfigureType: GUID,
     hChannel: HANDLE,
     SequenceNumber: UINT,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_CONFIGURE_OUTPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_CONFIGURE_OUTPUT {
     omac: D3D11_OMAC,
     ConfigureType: GUID,
     hChannel: HANDLE,
     SequenceNumber: UINT,
     ReturnCode: HRESULT,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_CONFIGURE_INITIALIZE_INPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_CONFIGURE_INITIALIZE_INPUT {
     Parameters: D3D11_AUTHENTICATED_CONFIGURE_INPUT,
     StartSequenceQuery: UINT,
     StartSequenceConfigure: UINT,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_CONFIGURE_PROTECTION_INPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_CONFIGURE_PROTECTION_INPUT {
     Parameters: D3D11_AUTHENTICATED_CONFIGURE_INPUT,
     Protections: D3D11_AUTHENTICATED_PROTECTION_FLAGS,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_CONFIGURE_CRYPTO_SESSION_INPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_CONFIGURE_CRYPTO_SESSION_INPUT {
     Parameters: D3D11_AUTHENTICATED_CONFIGURE_INPUT,
     DecoderHandle: HANDLE,
     CryptoSessionHandle: HANDLE,
     DeviceHandle: HANDLE,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_CONFIGURE_SHARED_RESOURCE_INPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_CONFIGURE_SHARED_RESOURCE_INPUT {
     Parameters: D3D11_AUTHENTICATED_CONFIGURE_INPUT,
     ProcessType: D3D11_AUTHENTICATED_PROCESS_IDENTIFIER_TYPE,
     ProcessHandle: HANDLE,
     AllowAccess: BOOL,
 }}
-STRUCT!{struct D3D11_AUTHENTICATED_CONFIGURE_ACCESSIBLE_ENCRYPTION_INPUT {
+STRUCT!{#[debug] struct D3D11_AUTHENTICATED_CONFIGURE_ACCESSIBLE_ENCRYPTION_INPUT {
     Parameters: D3D11_AUTHENTICATED_CONFIGURE_INPUT,
     EncryptionGuid: GUID,
 }}
@@ -2618,10 +2618,10 @@ ENUM!{enum D3D11_VDOV_DIMENSION {
     D3D11_VDOV_DIMENSION_UNKNOWN = 0,
     D3D11_VDOV_DIMENSION_TEXTURE2D = 1,
 }}
-STRUCT!{struct D3D11_TEX2D_VDOV {
+STRUCT!{#[debug] struct D3D11_TEX2D_VDOV {
     ArraySlice: UINT,
 }}
-STRUCT!{struct D3D11_VIDEO_DECODER_OUTPUT_VIEW_DESC {
+STRUCT!{#[debug] struct D3D11_VIDEO_DECODER_OUTPUT_VIEW_DESC {
     DecodeProfile: GUID,
     ViewDimension: D3D11_VDOV_DIMENSION,
     Texture2D: D3D11_TEX2D_VDOV,
@@ -2637,11 +2637,11 @@ ENUM!{enum D3D11_VPIV_DIMENSION {
     D3D11_VPIV_DIMENSION_UNKNOWN = 0,
     D3D11_VPIV_DIMENSION_TEXTURE2D = 1,
 }}
-STRUCT!{struct D3D11_TEX2D_VPIV {
+STRUCT!{#[debug] struct D3D11_TEX2D_VPIV {
     MipSlice: UINT,
     ArraySlice: UINT,
 }}
-STRUCT!{struct D3D11_VIDEO_PROCESSOR_INPUT_VIEW_DESC {
+STRUCT!{#[debug] struct D3D11_VIDEO_PROCESSOR_INPUT_VIEW_DESC {
     FourCC: UINT,
     ViewDimension: D3D11_VPIV_DIMENSION,
     Texture2D: D3D11_TEX2D_VPIV,
@@ -2658,10 +2658,10 @@ ENUM!{enum D3D11_VPOV_DIMENSION {
     D3D11_VPOV_DIMENSION_TEXTURE2D = 1,
     D3D11_VPOV_DIMENSION_TEXTURE2DARRAY = 2,
 }}
-STRUCT!{struct D3D11_TEX2D_VPOV {
+STRUCT!{#[debug] struct D3D11_TEX2D_VPOV {
     MipSlice: UINT,
 }}
-STRUCT!{struct D3D11_TEX2D_ARRAY_VPOV {
+STRUCT!{#[debug] struct D3D11_TEX2D_ARRAY_VPOV {
     MipSlice: UINT,
     FirstArraySlice: UINT,
     ArraySize: UINT,
@@ -2671,7 +2671,7 @@ UNION!{union D3D11_VIDEO_PROCESSOR_OUTPUT_VIEW_DESC_u {
     Texture2D Texture2D_mut: D3D11_TEX2D_VPOV,
     Texture2DArray Texture2DArray_mut: D3D11_TEX2D_ARRAY_VPOV,
 }}
-STRUCT!{struct D3D11_VIDEO_PROCESSOR_OUTPUT_VIEW_DESC {
+STRUCT!{#[debug] struct D3D11_VIDEO_PROCESSOR_OUTPUT_VIEW_DESC {
     ViewDimension: D3D11_VPOV_DIMENSION,
     u: D3D11_VIDEO_PROCESSOR_OUTPUT_VIEW_DESC_u,
 }}

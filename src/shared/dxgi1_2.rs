@@ -59,7 +59,7 @@ ENUM!{enum _DXGI_OFFER_RESOURCE_PRIORITY {
     DXGI_OFFER_RESOURCE_PRIORITY_NORMAL = 2,
     DXGI_OFFER_RESOURCE_PRIORITY_HIGH = 3,
 }}
-STRUCT!{struct DXGI_ADAPTER_DESC2 {
+STRUCT!{#[debug] struct DXGI_ADAPTER_DESC2 {
     Description: [WCHAR; 128],
     VendorId: UINT,
     DeviceId: UINT,
@@ -73,7 +73,7 @@ STRUCT!{struct DXGI_ADAPTER_DESC2 {
     GraphicsPreemptionGranularity: DXGI_GRAPHICS_PREEMPTION_GRANULARITY,
     ComputePreemptionGranularity: DXGI_COMPUTE_PREEMPTION_GRANULARITY,
 }}
-STRUCT!{struct DXGI_MODE_DESC1 {
+STRUCT!{#[debug] struct DXGI_MODE_DESC1 {
     Width: UINT,
     Height: UINT,
     RefreshRate: DXGI_RATIONAL,
@@ -82,12 +82,12 @@ STRUCT!{struct DXGI_MODE_DESC1 {
     Scaling: DXGI_MODE_SCALING,
     Stereo: BOOL,
 }}
-STRUCT!{struct DXGI_OUTDUPL_DESC {
+STRUCT!{#[debug] struct DXGI_OUTDUPL_DESC {
     ModeDesc: DXGI_MODE_DESC,
     Rotation: DXGI_MODE_ROTATION,
     DesktopImageInSystemMemory: BOOL,
 }}
-STRUCT!{struct DXGI_OUTDUPL_FRAME_INFO {
+STRUCT!{#[debug] struct DXGI_OUTDUPL_FRAME_INFO {
     LastPresentTime: LARGE_INTEGER,
     LastMouseUpdateTime: LARGE_INTEGER,
     AccumulatedFrames: UINT,
@@ -97,28 +97,28 @@ STRUCT!{struct DXGI_OUTDUPL_FRAME_INFO {
     TotalMetadataBufferSize: UINT,
     PointerShapeBufferSize: UINT,
 }}
-STRUCT!{struct DXGI_OUTDUPL_MOVE_RECT {
+STRUCT!{#[debug] struct DXGI_OUTDUPL_MOVE_RECT {
     SourcePoint: POINT,
     DestinationRect: RECT,
 }}
-STRUCT!{struct DXGI_OUTDUPL_POINTER_POSITION {
+STRUCT!{#[debug] struct DXGI_OUTDUPL_POINTER_POSITION {
     Position: POINT,
     Visible: BOOL,
 }}
-STRUCT!{struct DXGI_OUTDUPL_POINTER_SHAPE_INFO {
+STRUCT!{#[debug] struct DXGI_OUTDUPL_POINTER_SHAPE_INFO {
     Type: UINT,
     Width: UINT,
     Height: UINT,
     Pitch: UINT,
     HotSpot: POINT,
 }}
-STRUCT!{struct DXGI_PRESENT_PARAMETERS {
+STRUCT!{#[debug] struct DXGI_PRESENT_PARAMETERS {
     DirtyRectsCount: UINT,
     pDirtyRects: *mut RECT,
     pScrollRect: *mut RECT,
     pScrollOffset: *mut POINT,
 }}
-STRUCT!{struct DXGI_SWAP_CHAIN_DESC1 {
+STRUCT!{#[debug] struct DXGI_SWAP_CHAIN_DESC1 {
     Width: UINT,
     Height: UINT,
     Format: DXGI_FORMAT,
@@ -131,7 +131,7 @@ STRUCT!{struct DXGI_SWAP_CHAIN_DESC1 {
     AlphaMode: DXGI_ALPHA_MODE,
     Flags: UINT,
 }}
-STRUCT!{struct DXGI_SWAP_CHAIN_FULLSCREEN_DESC {
+STRUCT!{#[debug] struct DXGI_SWAP_CHAIN_FULLSCREEN_DESC {
     RefreshRate: DXGI_RATIONAL,
     ScanlineOrdering: DXGI_MODE_SCANLINE_ORDER,
     Scaling: DXGI_MODE_SCALING,
