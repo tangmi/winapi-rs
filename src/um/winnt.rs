@@ -148,11 +148,11 @@ pub const MAXLONGLONG: LONGLONG = 0x7fffffffffffffff;
 pub type PLONGLONG = *mut LONGLONG;
 pub type PULONGLONG = *mut ULONGLONG;
 pub type USN = LONGLONG;
-STRUCT!{struct LARGE_INTEGER_u {
+STRUCT!{#[debug] struct LARGE_INTEGER_u {
     LowPart: DWORD,
     HighPart: LONG,
 }}
-UNION!{union LARGE_INTEGER {
+UNION!{#[debug] union LARGE_INTEGER {
     [u64; 1],
     QuadPart QuadPart_mut: LONGLONG,
     u u_mut: LARGE_INTEGER_u,

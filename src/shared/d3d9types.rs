@@ -45,7 +45,7 @@ STRUCT!{struct D3DVECTOR {
     y: c_float,
     z: c_float,
 }}
-STRUCT!{struct D3DCOLORVALUE {
+STRUCT!{#[debug] struct D3DCOLORVALUE {
     r: c_float,
     g: c_float,
     b: c_float,

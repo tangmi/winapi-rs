@@ -49,7 +49,7 @@ STRUCT!{#[debug] struct RECTL {
 pub type PRECTL = *mut RECTL;
 pub type LPRECTL = *mut RECTL;
 pub type LPCRECTL = *const RECTL;
-STRUCT!{struct POINT {
+STRUCT!{#[debug] struct POINT {
     x: LONG,
     y: LONG,
 }}

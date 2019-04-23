@@ -117,7 +117,7 @@ ENUM!{enum DXGK_PTE_PAGE_SIZE {
     DXGK_PTE_PAGE_TABLE_PAGE_4KB = 0,
     DXGK_PTE_PAGE_TABLE_PAGE_64KB = 1,
 }}
-UNION!{union DXGK_PTE_u {
+UNION!{#[debug] union DXGK_PTE_u {
     [u64; 1],
     PageAddress PageAddress_mut: ULONGLONG,
     PageTableAddress PageTableAddress_mut: ULONGLONG,
@@ -166,12 +166,12 @@ BITFIELD!{D3DDDI_ALLOCATIONINFO Flags: UINT [
     Stereo set_Stereo[1..2],
     Reserved set_Reserved[2..32],
 ]}
-UNION!{union D3DDDI_ALLOCATIONINFO2_u1 {
+UNION!{#[debug] union D3DDDI_ALLOCATIONINFO2_u1 {
     [usize; 1],
     hSection hSection_mut: HANDLE,
     pSystemMem pSystemMem_mut: *const VOID,
 }}
-UNION!{union D3DDDI_ALLOCATIONINFO2_u2 {
+UNION!{#[debug] union D3DDDI_ALLOCATIONINFO2_u2 {
     [usize; 1],
     Priority Priority_mut: UINT,
     Unused Unused_mut: ULONG_PTR,
@@ -337,7 +337,7 @@ STRUCT!{struct D3DDDI_SYNCHRONIZATIONOBJECTINFO_u_Semaphore {
 STRUCT!{struct D3DDDI_SYNCHRONIZATIONOBJECTINFO_u_Reserved {
     Reserved: [UINT; 16],
 }}
-UNION!{union D3DDDI_SYNCHRONIZATIONOBJECTINFO_u {
+UNION!{#[debug] union D3DDDI_SYNCHRONIZATIONOBJECTINFO_u {
     [u32; 16],
     SynchronizationMutex SynchronizationMutex_mut:
         D3DDDI_SYNCHRONIZATIONOBJECTINFO_u_SynchronizationMutex,
@@ -394,7 +394,7 @@ STRUCT!{struct D3DDDI_SYNCHRONIZATIONOBJECTINFO2_u_PeriodicMonitoredFence {
 STRUCT!{struct D3DDDI_SYNCHRONIZATIONOBJECTINFO2_u_Reserved {
     Reserved: [UINT64; 8],
 }}
-UNION!{union D3DDDI_SYNCHRONIZATIONOBJECTINFO2_u {
+UNION!{#[debug] union D3DDDI_SYNCHRONIZATIONOBJECTINFO2_u {
     [u64; 8],
     SynchronizationMutex SynchronizationMutex_mut:
         D3DDDI_SYNCHRONIZATIONOBJECTINFO2_u_SynchronizationMutex,

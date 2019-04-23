@@ -785,12 +785,12 @@ interface ID3D11View(ID3D11ViewVtbl): ID3D11DeviceChild(ID3D11DeviceChildVtbl) {
         ppResource: *mut *mut ID3D11Resource,
     ) -> (),
 }}
-UNION!{union D3D11_BUFFER_SRV_u1 {
+UNION!{#[debug] union D3D11_BUFFER_SRV_u1 {
     [u32; 1],
     FirstElement FirstElement_mut: UINT,
     ElementOffset ElementOffset_mut: UINT,
 }}
-UNION!{union D3D11_BUFFER_SRV_u2 {
+UNION!{#[debug] union D3D11_BUFFER_SRV_u2 {
     [u32; 1],
     NumElements NumElements_mut: UINT,
     ElementWidth ElementWidth_mut: UINT,
@@ -848,7 +848,7 @@ STRUCT!{#[debug] struct D3D11_TEX2DMS_ARRAY_SRV {
     FirstArraySlice: UINT,
     ArraySize: UINT,
 }}
-UNION!{union D3D11_SHADER_RESOURCE_VIEW_DESC_u {
+UNION!{#[debug] union D3D11_SHADER_RESOURCE_VIEW_DESC_u {
     [u32; 4],
     Buffer Buffer_mut: D3D11_BUFFER_SRV,
     Texture1D Texture1D_mut: D3D11_TEX1D_SRV,
@@ -873,12 +873,12 @@ interface ID3D11ShaderResourceView(ID3D11ShaderResourceViewVtbl): ID3D11View(ID3
         pDesc: *mut D3D11_SHADER_RESOURCE_VIEW_DESC,
     ) -> (),
 }}
-UNION!{union D3D11_BUFFER_RTV_u1 {
+UNION!{#[debug] union D3D11_BUFFER_RTV_u1 {
     [u32; 1],
     FirstElement FirstElement_mut: UINT,
     ElementOffset ElementOffset_mut: UINT,
 }}
-UNION!{union D3D11_BUFFER_RTV_u2 {
+UNION!{#[debug] union D3D11_BUFFER_RTV_u2 {
     [u32; 1],
     NumElements NumElements_mut: UINT,
     ElementWidth ElementWidth_mut: UINT,
@@ -915,7 +915,7 @@ STRUCT!{#[debug] struct D3D11_TEX3D_RTV {
     FirstWSlice: UINT,
     WSize: UINT,
 }}
-UNION!{union D3D11_RENDER_TARGET_VIEW_DESC_u {
+UNION!{#[debug] union D3D11_RENDER_TARGET_VIEW_DESC_u {
     [u32; 3],
     Buffer Buffer_mut: D3D11_BUFFER_RTV,
     Texture1D Texture1D_mut: D3D11_TEX1D_RTV,
@@ -964,7 +964,7 @@ ENUM!{enum D3D11_DSV_FLAG {
     D3D11_DSV_READ_ONLY_DEPTH = 0x1,
     D3D11_DSV_READ_ONLY_STENCIL = 0x2,
 }}
-UNION!{union D3D11_DEPTH_STENCIL_VIEW_DESC_u {
+UNION!{#[debug] union D3D11_DEPTH_STENCIL_VIEW_DESC_u {
     [u32; 3],
     Texture1D Texture1D_mut: D3D11_TEX1D_DSV,
     Texture1DArray Texture1DArray_mut: D3D11_TEX1D_ARRAY_DSV,
@@ -1016,7 +1016,7 @@ STRUCT!{#[debug] struct D3D11_TEX3D_UAV {
     FirstWSlice: UINT,
     WSize: UINT,
 }}
-UNION!{union D3D11_UNORDERED_ACCESS_VIEW_DESC_u {
+UNION!{#[debug] union D3D11_UNORDERED_ACCESS_VIEW_DESC_u {
     [u32; 3],
     Buffer Buffer_mut: D3D11_BUFFER_UAV,
     Texture1D Texture1D_mut: D3D11_TEX1D_UAV,
@@ -2301,7 +2301,7 @@ STRUCT!{#[debug] struct D3D11_VIDEO_COLOR_YCbCrA {
     Cr: c_float,
     A: c_float,
 }}
-UNION!{union D3D11_VIDEO_COLOR {
+UNION!{#[debug] union D3D11_VIDEO_COLOR {
     [f32; 4],
     YCbCr YCbCr_mut: D3D11_VIDEO_COLOR_YCbCrA,
     RGBA RGBA_mut: D3D11_VIDEO_COLOR_RGBA,
@@ -2666,7 +2666,7 @@ STRUCT!{#[debug] struct D3D11_TEX2D_ARRAY_VPOV {
     FirstArraySlice: UINT,
     ArraySize: UINT,
 }}
-UNION!{union D3D11_VIDEO_PROCESSOR_OUTPUT_VIEW_DESC_u {
+UNION!{#[debug] union D3D11_VIDEO_PROCESSOR_OUTPUT_VIEW_DESC_u {
     [u32; 3],
     Texture2D Texture2D_mut: D3D11_TEX2D_VPOV,
     Texture2DArray Texture2DArray_mut: D3D11_TEX2D_ARRAY_VPOV,

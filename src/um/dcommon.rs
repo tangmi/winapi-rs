@@ -42,65 +42,65 @@ ENUM!{enum D2D1_ALPHA_MODE {
     D2D1_ALPHA_MODE_STRAIGHT = 2,
     D2D1_ALPHA_MODE_IGNORE = 3,
 }}
-STRUCT!{struct D2D1_PIXEL_FORMAT {
+STRUCT!{#[debug] struct D2D1_PIXEL_FORMAT {
     format: DXGI_FORMAT,
     alphaMode: D2D1_ALPHA_MODE,
 }}
-STRUCT!{struct D2D_POINT_2U {
+STRUCT!{#[debug] struct D2D_POINT_2U {
     x: UINT32,
     y: UINT32,
 }}
-STRUCT!{struct D2D_POINT_2F {
+STRUCT!{#[debug] struct D2D_POINT_2F {
     x: FLOAT,
     y: FLOAT,
 }}
 pub type D2D_POINT_2L = POINT;
-STRUCT!{struct D2D_VECTOR_2F {
+STRUCT!{#[debug] struct D2D_VECTOR_2F {
     x: FLOAT,
     y: FLOAT,
 }}
-STRUCT!{struct D2D_VECTOR_3F {
+STRUCT!{#[debug] struct D2D_VECTOR_3F {
     x: FLOAT,
     y: FLOAT,
     z: FLOAT,
 }}
-STRUCT!{struct D2D_VECTOR_4F {
+STRUCT!{#[debug] struct D2D_VECTOR_4F {
     x: FLOAT,
     y: FLOAT,
     z: FLOAT,
     w: FLOAT,
 }}
-STRUCT!{struct D2D_RECT_F {
+STRUCT!{#[debug] struct D2D_RECT_F {
     left: FLOAT,
     top: FLOAT,
     right: FLOAT,
     bottom: FLOAT,
 }}
-STRUCT!{struct D2D_RECT_U {
+STRUCT!{#[debug] struct D2D_RECT_U {
     left: UINT32,
     top: UINT32,
     right: UINT32,
     bottom: UINT32,
 }}
 pub type D2D_RECT_L = RECT;
-STRUCT!{struct D2D_SIZE_F {
+STRUCT!{#[debug] struct D2D_SIZE_F {
     width: FLOAT,
     height: FLOAT,
 }}
-STRUCT!{struct D2D_SIZE_U {
+STRUCT!{#[debug] struct D2D_SIZE_U {
     width: UINT32,
     height: UINT32,
 }}
-STRUCT!{struct D2D_MATRIX_3X2_F {
+STRUCT!{#[debug] struct D2D_MATRIX_3X2_F {
     matrix: [[FLOAT; 2]; 3],
 }}
-STRUCT!{struct D2D_MATRIX_4X3_F {
+STRUCT!{#[debug] struct D2D_MATRIX_4X3_F {
     matrix: [[FLOAT; 3]; 4],
 }}
-STRUCT!{struct D2D_MATRIX_4X4_F {
+STRUCT!{#[debug] struct D2D_MATRIX_4X4_F {
     matrix: [[FLOAT; 4]; 4],
 }}
-STRUCT!{struct D2D_MATRIX_5X4_F {
+STRUCT!{#[debug] struct D2D_MATRIX_5X4_F {
     matrix: [[FLOAT; 4]; 5],
 }}
 pub type D2D1_POINT_2F = D2D_POINT_2F;
