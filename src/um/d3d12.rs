@@ -10,7 +10,7 @@ use shared::dxgitype::DXGI_SAMPLE_DESC;
 use shared::guiddef::{GUID, IID, REFGUID, REFIID};
 use shared::minwindef::{BOOL, BYTE, DWORD, FLOAT, INT, LPCVOID, UINT};
 use shared::windef::RECT;
-use um::d3dcommon::{ID3DBlob, D3D_FEATURE_LEVEL, D3D_PRIMITIVE, D3D_PRIMITIVE_TOPOLOGY};
+use um::d3dcommon::{D3D_FEATURE_LEVEL, D3D_PRIMITIVE, D3D_PRIMITIVE_TOPOLOGY, ID3DBlob};
 use um::minwinbase::SECURITY_ATTRIBUTES;
 use um::unknwnbase::{IUnknown, IUnknownVtbl};
 use um::winnt::{HANDLE, HRESULT, LPCSTR, LPCWSTR, LUID};
@@ -3974,7 +3974,8 @@ STRUCT! {struct D3D12_SHADER_CACHE_SESSION_DESC {
     Version: UINT64,
 }}
 RIDL! {#[uuid(0x28e2495d, 0x0f64, 0x4ae4, 0xa6, 0xec, 0x12, 0x92, 0x55, 0xdc, 0x49, 0xa8)]
-interface ID3D12ShaderCacheSession(ID3D12ShaderCacheSessionVtbl): ID3D12DeviceChild(ID3D12DeviceChildVtbl) {
+interface ID3D12ShaderCacheSession(ID3D12ShaderCacheSessionVtbl)
+    : ID3D12DeviceChild(ID3D12DeviceChildVtbl) {
     fn FindValue(
         pKey: *const c_void,
         KeySize: UINT,

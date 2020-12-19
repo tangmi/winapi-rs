@@ -20,6 +20,12 @@ const WHITE_LIST: &'static [(&'static str, &'static [&'static str])] = &[
             "    D3D12_MESSAGE_ID_CREATEGRAPHICSPIPELINESTATE_OM_DUAL_SOURCE_BLENDING_CAN_ONLY_HAVE_RENDER_TARGET_0",
         ],
     ),
+    (
+        r"um\d3d12.rs",
+        &[
+            "pub const D3D12_RAYTRACING_MAX_PRIMITIVES_PER_BOTTOM_LEVEL_ACCELERATION_STRUCTURE: UINT = 536870912;",
+        ],
+    ),
 ];
 #[test]
 fn check_lines() {
